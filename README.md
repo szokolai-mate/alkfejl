@@ -20,30 +20,27 @@ A leírás alapján a szerepkörök és a hozzájuk tartozó funkcionális köve
 
 **Vendég (Guest)** 
 - projektek megtekintése
-
--problémák megtekintése
-
--megoldások megtekintése
-
--az ezekhez tartozó kommentek megtekintése
+- problémák megtekintése
+- megoldások megtekintése
+- az ezekhez tartozó kommentek megtekintése
 
 **Felhasználó (User)**
 - új probléma nyitása
--megoldás beküldése
--kommentelés
--szavazás
--új projekt nyitása
+- megoldás beküldése
+- kommentelés
+- szavazás
+- új projekt nyitása
 
 **Megbízott (Trusted)**
 - megoldás elfogadása
--probléma lezárása
--probléma újranyitása
+- probléma lezárása
+- probléma újranyitása
 
 **Tulajdonos (Owner)**
 - új megbízott felvétele
--megbízott törlése
--megbízottak megtekintése
--projekt inaktivizálása
--projekt újranyitása
+- megbízott törlése
+- megbízottak megtekintése
+- projekt inaktivizálása
+- projekt újranyitása
 
 

@@ -17,6 +17,7 @@ A problémákat és megoldásokat lehet véleményleni, valamit hozzájuk szóln
 A projekt tulajdonosa kijelölhet felhasználókat megbízottjaiként, akik a problémák és megoldások moderálását illetve elfogadását végzik.
 
 A leírás alapján a szerepkörök és a hozzájuk tartozó funkcionális követelmények a kovetkezők:
+
 **Vendég (Guest)** 
 - projektek megtekintése
 -problémák megtekintése

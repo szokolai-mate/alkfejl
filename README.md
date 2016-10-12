@@ -20,8 +20,11 @@ A leírás alapján a szerepkörök és a hozzájuk tartozó funkcionális köve
 
 **Vendég (Guest)** 
 - projektek megtekintése
+
 -problémák megtekintése
+
 -megoldások megtekintése
+
 -az ezekhez tartozó kommentek megtekintése
 
 **Felhasználó (User)**

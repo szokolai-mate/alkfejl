@@ -17,20 +17,26 @@ A problémákat és megoldásokat lehet véleményleni, valamit hozzájuk szóln
 A projekt tulajdonosa kijelölhet felhasználókat megbízottjaiként, akik a problémák és megoldások moderálását illetve elfogadását végzik.
 
 A leírás alapján a szerepkörök és a hozzájuk tartozó funkcionális követelmények a kovetkezők:
-Vendég (Guest) - projektek megtekintése
-problémák megtekintése
-megoldások megtekintése
-az ezekhez tartozó kommentek megtekintése
-Felhasználó (User) - új probléma nyitása
+**Vendég (Guest)** 
+- projektek megtekintése
+-problémák megtekintése
+-megoldások megtekintése
+-az ezekhez tartozó kommentek megtekintése
+
+**Felhasználó (User)**
+- új probléma nyitása
 -megoldás beküldése
 -kommentelés
 -szavazás
 -új projekt nyitása
-Megbízott (Trusted) - megoldás elfogadása
+
+**Megbízott (Trusted)**
+- megoldás elfogadása
 -probléma lezárása
 -probléma újranyitása
 
-Tulajdonos (Owner) - új megbízott felvétele
+**Tulajdonos (Owner)**
+- új megbízott felvétele
 -megbízott törlése
 -megbízottak megtekintése
 -projekt inaktivizálása

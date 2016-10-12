@@ -4,21 +4,13 @@
 
 **Neptun-kód:** F7XDW9
 
+  Ez a github repository tartalmazza a beadandómat az Alkalmazások fejlesztése tárgyra.A feladat egy saját magadnak kitalált alkalmazás megvalósítása és dokumentálása.
 ## Dokumentáció
 
 
-Követelményanalízis
-A követelmény feltárás során felmérik és összegyűjtik a megrendelt szoftverrel szemben támasztott felhasználói követelményeket, elemzik az alkalmazási szakterületet. Részei:
-Követelmények összegyűjtése: a nyújtandó szolgáltatások ismertetése rövid, szöveges leírásként, sokszor felsorolásként jelenik meg.
-Funkcionális elvárások
-Nem funkcionális követelmények
-Szakterületi fogalomjegyzék: ha vannak speciális fogalmak, akkor ezeket itt lehet összegyűjteni és magyarázni.
-Használatieset-modell
-Szerepkörök: lista rövid leírással
-Használati eset diagramok: a szerepkörök és az elérhető funkiók kapcsolatát jelenítik meg, ha kell, akkor esetenként rövid magyarázó szöveggel.
-Folyamatok pontos menete: legalább 1 folyamat kifejtése.
+###Követelményelemzés
 
-Projektekre szétosztott probléma és megoldás követő és listázó alkalmazás.
+**Projektekre szétosztott probléma és megoldás követő és listázó alkalmazás.**
 
 Egy olyan szerver-kliens alkalmazást fogok elkészíteni, mely egy internetes böngészőn keresztül elérhető. Az alkalmazás projekteknél felmerülő problémákat (például bugok, hibák vagy hiányosságok) fog nyilvántartani, közzétenni és a problémák lehetséges megoldásait nyilvántartani, közzétenni és elfogadni.
 A problémákat és megoldásokat lehet véleményleni, valamit hozzájuk szólni.

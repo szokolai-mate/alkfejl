@@ -47,3 +47,6 @@ A leírás alapján a szerepkörök és a hozzájuk tartozó funkcionális köve
 
 A szerepkörök kibővítik egymást a következő sorrendben:
 **Vendég <- Felhasználó <- Megbízott <- Tulajdonos** , azaz minden funkció amit a bal oldalon szereplő szerepkör része, a jobb oldalon szereplőé is. (Például Megbízott is tud megoldást beküldeni.) Ez alól kivétel a regisztráció, mivel egy felhasználó már regisztrálva van.
+
+**Használati esetek diagramja:**
+![Use-Case diagram](/docpics/usecase.png)

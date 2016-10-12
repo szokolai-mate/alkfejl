@@ -50,3 +50,13 @@ A szerepkörök kibővítik egymást a következő sorrendben:
 
 **Használati esetek diagramja:**
 ![Use-Case diagram](/docpics/usecase.png)
+
+**Péda folyamatábrák:**
+
+![Egy megoldás elfogadása](/docpics/megoldas_elfogadasa.png)
+
+Megbízott felhasználóként: egy megoldás elfogadása.
+
+![Kommentelés egy megoldásra](/docpics/kommenteles_megoldasra.png)
+
+Felhasználóként: Kommentelés egy megoldásra.

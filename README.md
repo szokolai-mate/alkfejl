@@ -105,4 +105,26 @@ Felhasználóként: Kommentelés egy megoldásra.
       - megoldások kommentjei
 - új projekt
 
+##Végpontok
+
+`GET /` - főoldal, projektek
+`POST /login` - belépési adatok -> főoldal
+`GET /register` - regisztrációs oldal
+`POST /register` - regisztrációs adatok
+
+`POST /search` - keresés projektek között -> főoldal
+`GET /profile` - profil oldal
+
+`GET /<PROJEKT_ID>` - kitüntetett projekt
+`GET /<PROJEKT_ID/<PROBLEM_ID>` - kitüntetett probléma
+
+`GET /new` - új projekt oldal
+`GET /<PROJEKT_ID>/new` - új probléma oldal
+`GET /<PROJEKT_ID/<PROBLEM_ID>/new` - új megoldás oldal
+
+`POST /new` - új projekt adatai
+`POST /<PROJEKT_ID>/new` - új probléma adatai
+`POST /<PROJEKT_ID/<PROBLEM_ID>/new` - új megoldás adatai
+
+`GET /<PROJECT_ID>/manage` - projekt szerkesztése
 

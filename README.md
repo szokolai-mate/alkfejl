@@ -148,38 +148,47 @@ Felhasználóként: Kommentelés egy megoldásra.
 ##Oldalvázlatok
 
 **Főoldal**
+
 ![Főoldal](/docpics/pages/főoldal.jpg)
 
 
 **Regisztráció**
+
 ![Regisztráció](/docpics/pages/register.jpg)
 
 
 **Profil**
+
 ![Profil](/docpics/pages/profile.jpg)
 
 
 **Új projekt**
+
 ![Új projekt](/docpics/pages/new_project.jpg)
 
 
 **Projekt szerkesztése**
+
 ![Projekt szerkesztése](/docpics/pages/manage_project.jpg)
 
 
 **Kiválasztott projekt**
+
 ![Kiválasztott projekt](/docpics/pages/project.jpg)
 
 
 **Új probléma beküldése**
+
 ![Új probléma beküldése](/docpics/pages/new_problem.jpg)
 
 
 **Probléma megoldásai**
+
 ![Probléma válaszai](/docpics/pages/problem.jpg)
 
 
 **Új megoldás**
+
 ![Új válasz](/docpics/pages/new_solution.jpg)
 
 

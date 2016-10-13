@@ -83,7 +83,7 @@ Felhasználóként: Kommentelés egy megoldásra.
     - probléma megoldásai
       - megoldások kommentjei
       
-Authentikálva:
+**Authentikálva:**
 
 - főoldal = projektek
   - keresés projektek között

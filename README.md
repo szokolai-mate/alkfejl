@@ -198,4 +198,17 @@ Felhasználóként: Kommentelés egy megoldásra.
 
 ##Nem-funkcionális követelmények
 
-too
+- **Szükséges környezet**
+  - Kliens oldalon
+    - JavaScript futtatására képes böngésző
+
+  - Szerver oldalon
+    - Node.js
+    - Adonis
+    - Relációs adatbáziskezelő
+    - Amit még nem tudok hogy kelleni fog
+  
+- **Személyes adatok biztonságos tárolása**
+- **Hibás adatok kiszűrése**
+- **Aergonomikus kezelőfelület**
+- **Vonzó külalak**

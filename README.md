@@ -68,3 +68,41 @@ Megbízott felhasználóként: egy megoldás elfogadása.
 ![Kommentelés egy megoldásra](/docpics/kommenteles_megoldasra.png)
 
 Felhasználóként: Kommentelés egy megoldásra.
+
+
+##Oldaltérkép
+
+- főoldal = projektek
+  - bejelentkezés
+  - keresés projektek között
+- regisztráció
+- projekt
+  - projekt kommentjei
+  - problémák
+    - probléma kommentjei
+    - probléma megoldásai
+      - megoldások kommentjei
+      
+Authentikálva:
+
+- főoldal = projektek
+  - keresés projektek között
+- profil
+  - saját projektek
+    - projekt szerkesztése
+      - megbízottak szerkesztése
+  - saját problémák
+    - probléma szerkesztése
+  - saját megoldások
+    - megoldás szerkesztése
+- projekt
+  - projekt kommentjei
+    - új probléma
+  - problémák
+    - új megoldás
+    - probléma kommentjei
+    - probléma megoldásai
+      - megoldások kommentjei
+- új projekt
+
+

@@ -32,11 +32,17 @@ A leírás alapján a szerepkörök és a hozzájuk tartozó funkcionális köve
 - szavazás
 - új projekt nyitása
 - kijelentkezés
+- saját komment szerkesztése
+- saját megoldás szerkesztése
+- saját probléma szerkesztése
+- saját szavazás visszavonása
 
 **Megbízott (Trusted)**
 - megoldás elfogadása
 - probléma lezárása
 - probléma újranyitása
+- megoldás szerkesztése
+- probléma szerkesztése
 
 **Tulajdonos (Owner)**
 - új megbízott felvétele
@@ -44,6 +50,7 @@ A leírás alapján a szerepkörök és a hozzájuk tartozó funkcionális köve
 - megbízottak megtekintése
 - projekt inaktivizálása
 - projekt újranyitása
+- projekt szerkesztése
 
 A szerepkörök kibővítik egymást a következő sorrendben:
 **Vendég <- Felhasználó <- Megbízott <- Tulajdonos** , azaz minden funkció amit a bal oldalon szereplő szerepkör része, a jobb oldalon szereplőé is. (Például Megbízott is tud megoldást beküldeni.) Ez alól kivétel a regisztráció, mivel egy felhasználó már regisztrálva van.

@@ -36,6 +36,7 @@ A leírás alapján a szerepkörök és a hozzájuk tartozó funkcionális köve
 - saját megoldás szerkesztése
 - saját probléma szerkesztése
 - saját szavazás visszavonása
+- profil megtekintése
 
 **Megbízott (Trusted)**
 - megoldás elfogadása

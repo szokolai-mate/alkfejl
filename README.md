@@ -144,3 +144,8 @@ Felhasználóként: Kommentelés egy megoldásra.
 
 `GET /<PROJECT_ID>/manage` - projekt szerkesztése
 
+
+##Oldalvázlatok
+
+**Főoldal**
+![Főoldal](/docpics/főoldal.jpg)

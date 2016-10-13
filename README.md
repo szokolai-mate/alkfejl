@@ -5,10 +5,10 @@
 **Neptun-kód:** F7XDW9
 
   Ez a github repository tartalmazza a beadandómat az Alkalmazások fejlesztése tárgyra.A feladat egy saját magadnak kitalált alkalmazás megvalósítása és dokumentálása.
-## Dokumentáció
+# Dokumentáció
 
 
-###Követelményelemzés
+##Követelményelemzés
 
 **Projektekre szétosztott probléma és megoldás követő és listázó alkalmazás.**
 
@@ -16,7 +16,7 @@ Egy olyan szerver-kliens alkalmazást fogok elkészíteni, mely egy internetes b
 A problémákat és megoldásokat lehet véleményleni, valamit hozzájuk szólni.
 A projekt tulajdonosa kijelölhet felhasználókat megbízottjaiként, akik a problémák és megoldások moderálását illetve elfogadását végzik.
 
-A leírás alapján a szerepkörök és a hozzájuk tartozó funkcionális követelmények a kovetkezők:
+A leírás alapján a szerepkörök és a hozzájuk tartozó **funkcionális követelmények** a kovetkezők:
 
 **Vendég (Guest)** 
 - projektek megtekintése
@@ -195,3 +195,7 @@ Felhasználóként: Kommentelés egy megoldásra.
 ##Adatbázisterv
 
 ![adatbázisterv](/docpics/db.png)
+
+##Nem-funkcionális követelmények
+
+too

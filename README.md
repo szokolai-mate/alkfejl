@@ -207,6 +207,11 @@ Felhasználóként: Kommentelés egy megoldásra.
     - Adonis
     - Relációs adatbáziskezelő
     - Amit még nem tudok hogy kelleni fog
+
+    -AdonisJS
+    -ace
+    -express-admin
+    -sqlite3
   
 - **Személyes adatok biztonságos tárolása**
 - **Hibás adatok kiszűrése**

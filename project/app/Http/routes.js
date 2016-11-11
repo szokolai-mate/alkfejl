@@ -18,3 +18,7 @@
 const Route = use('Route')
 
 Route.get('/', 'PostController.index')
+
+
+Route.get('/register', 'PostController.register')
+Route.post('/register','PostController.doRegister')

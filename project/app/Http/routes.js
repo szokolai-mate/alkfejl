@@ -19,6 +19,12 @@ const Route = use('Route')
 
 Route.get('/', 'PostController.index')
 
+Route.get('/new','PostController.createproject')
+Route.post('/new','PostController.doCreateproject')
+
+Route.post('/login','PostController.doLogin')
+Route.get('/logout','PostController.logout')
+
 
 Route.get('/register', 'PostController.register')
 Route.post('/register','PostController.doRegister')

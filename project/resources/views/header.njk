@@ -1,3 +1,50 @@
 <header>
-HEADER
+
+<div class="to-left">
+<image>
+<div class="item">
+<a href="/">Lapcím</a>
+</div>
+</div>
+
+{% if currentUser %}
+
+<div class="to-middle">
+<div class="button newproject">
+    <a href="/new">New Project</a>
+</div>
+</div>
+
+<div class="to-right">
+<div class="item welcome">
+Welcome, {{ currentUser.displayName }}!
+</div>
+<div class="item">
+<div id="logout" class="button">
+    <a href="/logout">Log Out</a>
+</div>
+</div>
+</div>
+
+
+{% else %}
+
+<div class="to-right">
+<div class="item">
+<div class="button">
+    <a href="/register">Register</a>
+</div>
+</div>
+<div class="item">
+<form method="post" action="/login">
+    {{ csrfField }}
+    <input type="text" placeholder="E-mail" name="email" size="7" value="{{ old('email') }}" required>
+    <input type="password" placeholder="Password" name="password" size="7" required>
+    <input type="submit" value="Log In" class="button login" >
+</form>
+</div>
+</div>
+
+{% endif %}
+
 </header>

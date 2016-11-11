@@ -1,0 +1,231 @@
+body{
+    background: #E7F1E3;
+    margin-top:50px;
+    margin-bottom: 100px;
+}
+
+textarea{
+    resize: none;
+}
+
+label {
+    display: none;
+}
+
+.visible{
+    display: inline-block;
+}
+
+header{
+    background: #65cabb; /* For browsers that do not support gradients */
+    background-image: -webkit-radial-gradient(center top, ellipse cover,#69bfaf,#61c5b5 , #6fcfbf ); /* New WebKit syntax */
+
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    top:0px;
+    left:0px;
+
+    border-radius : 0px 0px 5px 5px;
+    box-shadow: 0px 3px 10px gray;
+
+    line-height: 50px;
+
+    z-index: 5;
+    
+}
+
+footer{
+    background:  #Cf6f7f;
+    background-image: -webkit-radial-gradient(center bottom, ellipse cover,#C06070,#Cf6f7f , #Bf7f8f ); /* New WebKit syntax */
+    position: fixed;
+    width: 80%;
+    height: 30px;
+    bottom:0px;
+    left:10%;
+
+    border-radius : 5px 5px 0px 0px;
+    box-shadow: 0px -2px 10px gray;
+
+    text-align: center;
+    line-height: 30px;
+    font-size: 80%;
+    text-shadow: 0px 0px 2px white;
+
+    z-index: 5;
+}
+
+span{
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+.content{
+    padding-bottom: 20px;
+    padding-top: 20px;
+    text-align: center;
+    position:relative;
+    width: 50%;
+    left:25%;
+    box-shadow: 20px 0px 20px -25px gray,
+                -20px 0px 20px -25px gray;
+}
+
+
+header *{
+    display:inline-block;
+}
+
+header .item{
+    margin:0px 20px 0px 20px;
+}
+
+
+header .to-right{
+    display: inline-block;
+    text-align: right;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    height: 50px;
+    line-height: 50px;
+}
+
+header .to-left{
+    display: inline-block;
+    text-align: left;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    height: 50px;
+    line-height: 50px;
+}
+
+header .to-middle{
+    margin:auto;
+    position: fixed;
+    top: 0px;
+    left: 47%;
+    display: inline-block;
+    text-align: center;
+}
+
+.button a{
+    text-decoration: none ;
+    padding: 0px 10px 0px 10px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color:#d09020;
+    text-shadow: 0px 0px 5px black;
+    }
+
+.button:hover{
+    background: #ff8c3f;
+    border: groove 2px;
+    transition: all 80ms ease-out;
+}
+
+.button:hover a{
+    color: black;
+    text-shadow: 0px 0px 5px white;
+}
+
+.button:active{
+    border:inset 2px;
+}
+
+.button{
+    border: solid 2px #3f8fff;
+    background: #3f8fff;
+    border-radius: 5px;
+    vertical-align: middle;
+    line-height: 40px;
+    text-decoration: none ;
+    padding: 0px 10px 0px 10px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color:#d09020;
+    text-shadow: 0px 0px 5px black;
+}
+
+.error-container{
+    position: fixed;
+    right:0px;
+    top:50px;
+    z-index: -1;
+    background: #ff8c3f;
+    box-shadow: 0px 2px 5px grey;
+    padding: 10px 10px 10px 10px; 
+    border-radius: 0px 0px 0px 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    color:maroon;
+    text-shadow: 1px 1px 5px white;
+    max-width: 20%;
+}
+
+.content .error-container{
+    position: relative;
+    vertical-align: middle;
+    border-radius: 10px;
+    padding:10px 0px 10px 0px;
+    width: 80%;
+    max-width: 80%;
+    text-align: left;
+    left:10%;
+    box-shadow: 0px 0px 0px black;
+    border: ridge 2px;
+}
+
+#logout {
+    background:#ff8c3f;
+}
+#logout:hover {
+    background:#ff3c10;
+}
+
+#logout a{
+    color:black;
+    text-shadow: 0px 0px 5px white;
+}
+#logout:hover a{
+    color:maroon;
+    text-shadow: 0px 0px 2px black,
+                0px 0px 5px white;
+}
+
+.login:hover {
+    background: #55dd5f;
+    color:gray;
+    text-shadow: 0px 0px 5px white;
+}
+
+.login {
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color:#d09020;
+    text-shadow: 0px 0px 5px black;
+    }
+
+.newproject {
+    background: #45adff;
+    color:black;
+    text-shadow: 0px 0px 5px white;
+
+}
+
+.newproject a{
+    color:black;
+    text-shadow: 0px 0px 5px white;
+}
+.newproject:hover a{
+    text-shadow: 0px 0px 5px white;
+}
+.newproject:hover {
+    background: #55dd5f;
+}
+
+.welcome {
+    font-weight: bold;
+}

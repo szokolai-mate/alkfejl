@@ -1,5 +1,22 @@
 {% extends "layout" %}
 
 {% block content %}
-FUCK YOU, {{ name }}
+
+{% if old('errors') %}
+          <div class="error-container">
+            <div class="panel-body">
+              <ul>
+                {% for error in old('errors') %}
+                <li>{{ error.message }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+ {% endif %} 
+
+<div class="content">
+{% for project in projects %}
+     <li>{{ project.title }}</li>
+{% endfor %}
+</div>
 {% endblock %}

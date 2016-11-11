@@ -1,0 +1,35 @@
+{% extends "layout" %}
+
+{% block content %}
+<div class="content">
+<div class="form-container">
+<form id="createproject-form" method="post">
+  {{ csrfField }}
+
+<h1>New Project</h1>
+<br>
+<label for="projectname">Project Name</label>
+<br>
+<input type="text" name="projectname" placeholder="Project Name" required value="{{ old('projectname') }}">
+<br>
+<label for="description">Project Description</label>
+<br>
+<textarea name="description" placeholder="Project Description" form="createproject-form" rows="40" cols="100" required value="{{ old('description') }}"></textarea>
+<br>
+<br>
+<input type="submit" value="Create Project" class="button newproject">
+</form>
+</div>
+{% if old('errors') %}
+          <div class="error-container">
+            <div class="panel-body">
+              <ul>
+                {% for error in old('errors') %}
+                <li>{{ error.message }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+{% endif %}    
+</div>
+{% endblock %}

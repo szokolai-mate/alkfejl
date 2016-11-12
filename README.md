@@ -23,15 +23,15 @@ A leírás alapján a szerepkörök és a hozzájuk tartozó **funkcionális kö
 - problémák megtekintése
 - megoldások megtekintése
 - az ezekhez tartozó kommentek megtekintése
-- _bejelentkezés (exklúzív)_
+- _bejelentkezés (exklúzív)_ /*DONE*/
 
 **Felhasználó (User)**
 - új probléma nyitása
 - megoldás beküldése
 - kommentelés
 - szavazás
-- új projekt nyitása
-- kijelentkezés
+- új projekt nyitása /*DONW*/
+- kijelentkezés /*DONE*/
 - saját komment szerkesztése
 - saját megoldás szerkesztése
 - saját probléma szerkesztése
@@ -49,8 +49,8 @@ A leírás alapján a szerepkörök és a hozzájuk tartozó **funkcionális kö
 - új megbízott felvétele
 - megbízott törlése
 - megbízottak megtekintése
-- projekt inaktivizálása
-- projekt újranyitása
+- projekt inaktivizálása /*DONE*/
+- projekt újranyitása /*DONE*/
 - projekt szerkesztése
 
 A szerepkörök kibővítik egymást a következő sorrendben:

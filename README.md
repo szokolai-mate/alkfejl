@@ -119,12 +119,12 @@ Felhasználóként: Kommentelés egy megoldásra.
 
 `POST /search` - keresés projektek között -> főoldal
 
-`GET /profile` - profil oldal
+`GET /profile/<USER_ID>` - profil oldal
 
 
-`GET /<PROJEKT_ID>` - kitüntetett projekt
+`GET /show/<PROJEKT_ID>` - kitüntetett projekt
 
-`GET /<PROJEKT_ID/<PROBLEM_ID>` - kitüntetett probléma
+`GET /<PROJEKT_ID/show/<PROBLEM_ID>` - kitüntetett probléma
 
 
 `GET /new` - új projekt oldal

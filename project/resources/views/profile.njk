@@ -1,0 +1,138 @@
+{% extends "layout" %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="../stylesheet-normal.css">
+
+<div class="profile-details to-left">
+<h2>Profile details</h2>
+
+<ul>
+<li><span class="key">Name:</span> {{ displayName }}</li>
+<li><span class="key">Member since:</span> {{ memberSince }}</li>
+</ul>
+</div>
+
+<div class="project-list to-right">
+{% if projects!="" %}
+<div class="title">
+{% if currentUser.displayName==displayName %}
+<h2>My projects</h2>
+{% else %}
+<h2>{{ displayName }}'s projects</h2>
+{% endif %}
+</div>
+<ul class="list">
+{% for project in projects %}
+     <li class="list-item">
+     <div>
+     <a href="/show/{{ project.id }}">
+     <div class="name {% if project.active==0 %}deactivated{% endif %}">
+     {{ project.title }}
+     </div>
+     </a>
+     </div>
+     </li>
+{% endfor %}
+</ul>
+{% else %}
+<div class="title">
+{% if currentUser.displayName==displayName %}
+<h2>No projects</h2>
+{% else %}
+<h2>{{ displayName }} has no projects</h2>
+{% endif %}
+</div>
+{% endif %}
+</div>
+
+
+<div class="content">
+
+
+<div class="container  problem-list">
+{% if problems!="" %}
+{% if currentUser.displayName==displayName %}
+<h2>My problems</h2>
+{% else %}
+<h2>{{ displayName }}'s problems</h2>
+{% endif %}
+<ul class="list">
+{% for problem in problems %}
+     <li class="list-item">
+     <div>
+     <a href="/{{ problem.projectID }}/show/{{ problem.id }}">
+     <div class="name {% if problem.active==0 %}deactivated{% endif %}">
+     {{ problem.title }}
+     </div>
+     </a>
+     <div class="stats">
+        <div class="score">
+            {{ problem.score }} 
+        </div>
+        <div class="solved-icon {% if problem.solutions>0 %}solved{% endif %}">
+        </div>
+     </div>
+     </div>
+     </li>
+{% endfor %}
+</ul>
+{% else %}
+<div class="title">
+{% if currentUser.displayName==displayName %}
+<h2>No problems</h2>
+{% else %}
+<h2>{{ displayName }} has no problems</h2>
+{% endif %}
+</div>
+{% endif %}
+
+</div>
+
+
+<div class="container  solution-list">
+{% if solutions!="" %}
+{% if currentUser.displayName==displayName %}
+<h2>My solutions</h2>
+{% else %}
+<h2>{{ displayName }}'s solutions</h2>
+{% endif %}
+<ul class="list">
+{% for solution in solutions %}
+     <li class="list-item {% if solution.accepted==1 %}accepted{% endif %}">
+     <div>
+     <a href="/{{ solution.projectID }}/show/{{ solution.problemID }}">
+     <div class="description">
+     {% for line in solution.description%}
+     {{ line }}
+     <br>
+     {% endfor %}
+     </div>
+     </a>
+     <div class="stats">
+        <div class="score">
+            {{ solution.score }}
+        </div>
+        <div class="solved-icon {% if solution.accepted>0 %}solved{% endif %}">
+        </div>
+     </div>
+     </div>
+     </li>
+{% endfor %}
+</ul>
+{% else %}
+<div class="title">
+{% if currentUser.displayName==displayName %}
+<h2>No solutions</h2>
+{% else %}
+<h2>{{ displayName }} has no solutions</h2>
+{% endif %}
+</div>
+{% endif %}
+
+
+</div>
+
+
+</div>
+
+{% endblock %}

@@ -33,7 +33,7 @@ module.exports = {
       filename: Helpers.databasePath('development.sqlite')
     },
     useNullAsDefault: true,
-    debug: true
+    debug: false
   },
 
   /*

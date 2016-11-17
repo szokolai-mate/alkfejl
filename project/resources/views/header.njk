@@ -19,8 +19,11 @@
 <div class="item welcome">
 Welcome, {{ currentUser.displayName }}!
 </div>
+<div class="item button login">
+    <a href="/profile/{{ currentUser.id  }}">Profile</a>
+</div>
 <div class="item">
-<div id="logout" class="button">
+<div id="logout" class="button logout">
     <a href="/logout">Log Out</a>
 </div>
 </div>
@@ -46,5 +49,18 @@ Welcome, {{ currentUser.displayName }}!
 </div>
 
 {% endif %}
+
+{% if old('headererrors') %}
+          <div class="error-container" id="headererrors">
+              <input type="checkbox">
+            <div class="panel-body">
+              <ul>
+                {% for error in old('headererrors') %}
+                <li>{{ error.message }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+          {% endif %}    
 
 </header>

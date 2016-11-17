@@ -2,21 +2,42 @@
 
 {% block content %}
 
-{% if old('errors') %}
-          <div class="error-container">
-            <div class="panel-body">
-              <ul>
-                {% for error in old('errors') %}
-                <li>{{ error.message }}</li>
-                {% endfor %}
-              </ul>
-            </div>
-          </div>
- {% endif %} 
-
 <div class="content">
+<div class="container">
+
+<div>
+<form action="/search" method="post">
+    {{ csrfField }}
+<input type="text" placeholder="Search" name="searchterm" size="10">
+<input type="submit" value="Search" class="button search">
+</form>
+</div>
+<br>
+
+<ul class="list">
 {% for project in projects %}
-     <li>{{ project.title }}</li>
+     <li class="list-item">
+     <div class=" {% if currentUser.id==project.ownerID %} own-item {% endif %}">
+     <a href="/show/{{ project.id }}">
+     <div class="name">
+     {{ project.title }}
+     </div>
+     </a>
+     <div class="description">
+     {% for line in project.description %}
+     {{ line }}
+     <br>
+     {% endfor %}
+     </div>
+     <div class="stats">
+     <div class = "owner">
+     <a href="/profile/{{ project.ownerID }}">{{ project.owner.displayName }}</a>
+     </div>
+     </div>
+     </div>
+     </li>
 {% endfor %}
+</ul>
+</div>
 </div>
 {% endblock %}

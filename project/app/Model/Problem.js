@@ -16,7 +16,6 @@ class Problem extends Lucid {
     project(){
         return this.belongsTo('App/Model/Project')
     }
-
 }
 
 module.exports = Problem

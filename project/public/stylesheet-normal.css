@@ -1,19 +1,17 @@
 body{
+    height:100%;
     background: #E7F1E3;
+    background: linear-gradient(180deg,#E7F1E3 50%,#c0d0c0 90%,#a7b1a3);
     margin-top:50px;
     margin-bottom: 100px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 textarea{
     resize: none;
-}
-
-label {
-    display: none;
-}
-
-.visible{
-    display: inline-block;
+    max-width: 80%;
+    width:80%;
 }
 
 header{
@@ -31,7 +29,7 @@ header{
 
     line-height: 50px;
 
-    z-index: 5;
+    z-index: 1;
     
 }
 
@@ -52,7 +50,7 @@ footer{
     font-size: 80%;
     text-shadow: 0px 0px 2px white;
 
-    z-index: 5;
+    z-index: 1;
 }
 
 span{
@@ -62,10 +60,10 @@ span{
 }
 
 .content{
-    padding-bottom: 20px;
-    padding-top: 20px;
+    padding: 20px 10px 20px 10px;
+    word-wrap: break-word;
     text-align: center;
-    position:relative;
+    position:absolute;
     width: 50%;
     left:25%;
     box-shadow: 20px 0px 20px -25px gray,
@@ -81,18 +79,44 @@ header .item{
     margin:0px 20px 0px 20px;
 }
 
+.to-right{
+    width:20%;
+    position: fixed;
+    top:50px;
+    right:0px;
+    margin:10px 20px 10px 0px;
+    padding:10px;
+    box-shadow: 20px 0px 20px -25px gray,
+                -20px 0px 20px -25px gray;
+}
+
+
 
 header .to-right{
-    display: inline-block;
+    display: inline;
+    width:30%;
     text-align: right;
     position: fixed;
     right: 0px;
     top: 0px;
     height: 50px;
     line-height: 50px;
+    margin:0px;
+    padding:0px;
+}
+.to-left{
+    width:20%;
+    position: fixed;
+    top:50px;
+    left:0px;
+    margin:10px 0px 10px 20px;
+    padding:10px;
+    box-shadow: 20px 0px 20px -25px gray,
+                -20px 0px 20px -25px gray;
 }
 
 header .to-left{
+    width:30%;
     display: inline-block;
     text-align: left;
     position: fixed;
@@ -100,9 +124,11 @@ header .to-left{
     top: 0px;
     height: 50px;
     line-height: 50px;
+    margin:0px;
+    padding: 0px;
 }
 
-header .to-middle{
+.to-middle{
     margin:auto;
     position: fixed;
     top: 0px;
@@ -118,6 +144,7 @@ header .to-middle{
     font-family: Arial, Helvetica, sans-serif;
     color:#d09020;
     text-shadow: 0px 0px 5px black;
+    display: block;
     }
 
 .button:hover{
@@ -142,54 +169,25 @@ header .to-middle{
     vertical-align: middle;
     line-height: 40px;
     text-decoration: none ;
-    padding: 0px 10px 0px 10px;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     color:#d09020;
     text-shadow: 0px 0px 5px black;
+    text-align: center;
 }
 
-.error-container{
-    position: fixed;
-    right:0px;
-    top:50px;
-    z-index: -1;
-    background: #ff8c3f;
-    box-shadow: 0px 2px 5px grey;
-    padding: 10px 10px 10px 10px; 
-    border-radius: 0px 0px 0px 15px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: bold;
-    color:maroon;
-    text-shadow: 1px 1px 5px white;
-    max-width: 20%;
-}
-
-.content .error-container{
-    position: relative;
-    vertical-align: middle;
-    border-radius: 10px;
-    padding:10px 0px 10px 0px;
-    width: 80%;
-    max-width: 80%;
-    text-align: left;
-    left:10%;
-    box-shadow: 0px 0px 0px black;
-    border: ridge 2px;
-}
-
-#logout {
+.logout {
     background:#ff8c3f;
 }
-#logout:hover {
+.logout:hover {
     background:#ff3c10;
 }
 
-#logout a{
+.logout a{
     color:black;
     text-shadow: 0px 0px 5px white;
 }
-#logout:hover a{
+.logout:hover a{
     color:maroon;
     text-shadow: 0px 0px 2px black,
                 0px 0px 5px white;
@@ -226,6 +224,280 @@ header .to-middle{
     background: #55dd5f;
 }
 
+.search{
+    line-height: 20px;
+}
+
+.tab-link{
+    float: right;
+    height:30px;
+    width:30px;
+    top: 10px;
+    background: red;
+    margin-top:6px;
+}
+
+
 .welcome {
     font-weight: bold;
+}
+
+.list{
+    list-style-type: none;
+    padding:0px;
+    text-align: center;
+    position: relative;
+    width: 90%;
+    margin:auto ;
+}
+
+.list .deactivated {
+    background: #ff8c3f;    
+}
+
+.list-item{
+    text-align: center;
+    margin:10px 0px 10px 0px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px gray;
+    word-wrap: break-word;
+}
+
+.list-item a{
+    text-decoration: none;
+    color:black;
+}
+
+.list-item .name{
+    border-radius: 10px;
+    border: solid 2px;
+    padding: 5px 5px 5px 5px;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 120%;
+}
+
+.decorless-link{
+    text-decoration: none ;
+    color: black;
+}
+
+.back-link{
+    border:dotted 2px black;
+    border-radius: 5px;
+}
+
+.title{
+    text-align: center;
+}
+
+.description{
+    border-radius: 10px;
+    padding: 10px 10px 10px 10px;
+    text-align: left;
+
+}
+
+.list-item .owner{
+    float:right;
+}
+.list-item .score{
+    float: left;
+    font-weight: bold;
+    margin-top: 4px;
+}
+.list-item .solved-icon{
+    float:left;
+    margin: 4px 10px 0px 10px;
+    background: yellow;
+    width: 20px;
+    height:20px;
+}
+
+.list-item .solved{
+    background: green;
+}
+
+.list-item .own-item{
+    background: #30b090;
+    border-radius: 10px;
+}
+
+.list-item .stats{
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+    border: ridge 2px;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.profile-details {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.profile-details ul{
+    list-style-type: none;
+    line-height: 35px;
+    text-align: left;
+}
+
+.profile-details .key{
+    font-weight: bold;
+}
+
+.project-details {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.project-details p{
+    text-align: left;
+}
+
+.trusted-users{
+    text-align: center;
+}
+.delete-icon{
+    background: red;
+    height: 25px;
+    width: 25px;
+    float: right;
+}
+
+.voter{
+    width: 50px;
+    height: 20px;
+    float: left;
+    margin:4px 20px 0px 20px;
+}
+
+.positive-vote{
+    width: 20px;
+    height: 20px;
+    background: green;
+    float: left;
+    border: none;
+}
+
+.negative-vote{
+    width: 20px;
+    height: 20px;
+    background: red;
+    float: right;
+    border: none;
+}
+
+.voted{
+    background: #aaaacc;
+    border-radius: 5px;
+}
+
+
+.error-container{
+    position: fixed;
+    right:0px;
+    top:50px;
+    background: #ff8c3f;
+    box-shadow: 0px 2px 5px grey;
+    padding: 10px 10px 10px 10px; 
+    border-radius: 0px 0px 0px 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    color:maroon;
+    text-shadow: 1px 1px 5px white;
+    max-width: 20%;
+}
+
+.error-container input{
+    float:left;
+}
+
+.error-container input:checked ~ div{
+    background: red;
+    display:none;
+}
+
+.content .error-container{
+    position: relative;
+    vertical-align: middle;
+    border-radius: 10px;
+    padding:10px 0px 10px 0px;
+    width: 80%;
+    max-width: 80%;
+    text-align: left;
+    left:10%;
+    box-shadow: 0px 0px 0px black;
+    border: ridge 2px;
+}
+
+.content .error-container li{
+    box-shadow: 0px 0px 0px black;
+}
+
+
+label{
+    display: none;
+}
+
+.visible{
+    display: inline-block;
+}
+
+
+
+
+
+/*testing menu*/
+
+.accordion {
+	}
+.accordion .submenu {
+	}
+.accordion .submenu a{
+	color:black;
+	text-decoration:none;
+	font-weight:400;
+	font-size:110%;
+	font-family:Arial ,serif;
+	line-height:150%;
+}
+.accordion label.tab {
+	z-index:2;
+	cursor:pointer;
+	padding:0px 10px 0px 10px;
+	font-family: Arial , Sans-serif;
+	font-size:135%;
+	font-weight:600;
+	box-shadow:0px 0px 0px 1px rgba(155,155,155,0.3), 
+        1px 1px 2px 1px #e1c7c7 inset, 
+        0px 2px 2px rgba(0,0,0,0.1);
+	display:block;
+	line-height:200%;
+	color:#001020;
+	text-shadow:1px 1px 0px white,1px 1px 2px black;
+    border-radius: 5px;
+    margin-top:10px;
+}
+.accordion label.tab.empty:hover{
+    background: #ff8c3f;
+}
+
+.accordion label.tab:hover{
+    background: #69bfaf;
+    background-image: -webkit-radial-gradient(center top, ellipse cover,#69bfaf,#61c5b5 , #6fcfbf ); /* New WebKit syntax */
+}
+.accordion input:checked + label.tab{
+    background: #6fcfbf;
+    background-image: -webkit-radial-gradient(center top, ellipse cover,#6fcfbf,#71d5b5 , #7fdfcf ); /* New WebKit syntax */
+	box-shadow: 
+        0px 0px 0px 1px rgba(155,155,155,0.3), 
+        0px 2px 2px rgba(0,0,0,0.1);
+}
+.accordion  .tab-checkbox{
+	display:none;
+}
+
+.accordion input:not(:checked) ~ article.submenu{
+    height:0px;
 }

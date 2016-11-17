@@ -1,0 +1,130 @@
+{% extends "layout" %}
+
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="../stylesheet-normal.css">
+
+<div class="to-left project-details">
+<br>
+<a href="/show/{{ project.id }}" class="decorless-link">
+<div class="name back-link">
+<h2>{{ project.title }}</h2>
+</div>
+</a>
+<br>
+<h2>Project description</h2>
+<div class="description">
+{% for line in project.description %}
+            {{ line }}
+            <br>
+{% endfor %}
+</div>
+<br>
+</div>
+
+<div class="content">
+<h1>{{ problem.title }}</h1>
+<br>
+<div class="description">
+{% for line in problem.description %}
+            {{ line }}
+            <br>
+{% endfor %}
+</div>
+<br>
+    
+<div class="container">
+    
+     {% if problemcomments=="" %}
+        <h2>No comments yet</h2>
+        {% else %}
+        <h2>Comments</h2>
+    {% endif %}
+    <div class="container comment-list">
+        {% if problemcomments!="" %}
+        <ul class="list">
+        {% for comment in problemcomments %}
+            <li class="list-item">
+            <div {% if currentUser.id==comment.ownerID %} class="own-item" {% endif %}>
+            <div class="description">
+            {% for line in comment.content %}
+            {{ line }}
+            <br>
+            {% endfor %}
+            </div>
+            <div class="stats">
+            <div class = "owner">
+            <a href="/profile/{{ comment.ownerID }}">{{ comment.owner.displayName }}</a>
+            </div>
+            </div>
+            </div>
+            </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+        <br>
+    </div>
+    {% if currentUser %}
+    <div class="container">
+        <form id="newcomment-form" method="post" action="/show/{{ project.id }}/comment">
+            {{ csrfField }}
+            <label for="content">Your Comment</label>
+            <textarea name="content" placeholder="Your comment" form="newcomment-form" rows="5" required>{{ old('content') }}</textarea>
+            <br>
+            <input type="submit" value="Comment">
+        </form>
+    </div>
+    {% endif %}
+    <br>
+</div>
+
+<div class="container">
+    <div class="container solution-list">
+    {% if solutions=="" %}
+        {% if currentUser %}
+        <h2>No solutions yet, be the first!</h2> 
+        {% else %}
+        <h2>No solutions yet</h2>
+        {% endif %}
+    {% else %}
+    <ul class="list">
+    {% for solution in solutions %}
+        <li class="list-item">
+        <div class="{% if solution.active==0 %}deactivated{% endif %}{% if solution.accepted==1 %} accepted{% endif %}">
+        <div class="description">
+        {% for line in solution.description %}
+            {{ line }}
+            <br>
+        {% endfor %}
+        </div>
+        </a>
+        <div class="stats">
+        <div class = "owner">
+        <a href="/profile/{{ comment.ownerID }}">
+        {{ solution.owner.displayName }}
+        </a>
+        </div>
+        </div>
+        </div>
+        </li>
+    {% endfor %}
+    </ul>
+    <br>
+    {% endif %}
+    </div>
+
+<div class="container">
+    {% if currentUser %}
+        <br>
+        <div class="button login">
+        <a href="/{{ project.id }}/{{ problem.id }}/new">New Solution</a>
+        </div>
+        <br>
+    {% endif %}
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

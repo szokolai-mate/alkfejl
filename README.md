@@ -179,7 +179,7 @@ Felhasználóként: Kommentelés egy megoldásra.
 ![Projekt szerkesztése](/docpics/pages/manage_project.jpg)
 
 
-**Kiválasztott projekt**
+**Kiválasztott projekt** **DONE**
 
 ![Kiválasztott projekt](/docpics/pages/project.jpg)
 

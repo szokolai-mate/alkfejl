@@ -26,8 +26,8 @@ A leírás alapján a szerepkörök és a hozzájuk tartozó **funkcionális kö
 - _bejelentkezés (exklúzív)_ **DONE**
 
 **Felhasználó (User)**
-- új probléma nyitása
-- megoldás beküldése
+- új probléma nyitása **DONE**
+- megoldás beküldése **DONE**
 - kommentelés
 - szavazás
 - új projekt nyitása **DONE**
@@ -36,22 +36,25 @@ A leírás alapján a szerepkörök és a hozzájuk tartozó **funkcionális kö
 - saját megoldás szerkesztése
 - saját probléma szerkesztése
 - saját szavazás visszavonása
-- profil megtekintése
+- profil megtekintése **DONE**
 
 **Megbízott (Trusted)**
 - megoldás elfogadása
-- probléma lezárása
-- probléma újranyitása
+- probléma lezárása _removed_
+- probléma újranyitása _removed_
 - megoldás szerkesztése
 - probléma szerkesztése
 
 **Tulajdonos (Owner)**
-- új megbízott felvétele
-- megbízott törlése
-- megbízottak megtekintése
+- új megbízott felvétele **DONE**
+- megbízott törlése **DONE**
+- megbízottak megtekintése **DONE**
 - projekt inaktivizálása **DONE**
 - projekt újranyitása **DONE**
 - projekt szerkesztése
+
+- probléma lezárása 
+- probléma újranyitása
 
 A szerepkörök kibővítik egymást a következő sorrendben:
 **Vendég <- Felhasználó <- Megbízott <- Tulajdonos** , azaz minden funkció amit a bal oldalon szereplő szerepkör része, a jobb oldalon szereplőé is. (Például Megbízott is tud megoldást beküldeni.) Ez alól kivétel a regisztráció, mivel egy felhasználó már regisztrálva van.
@@ -161,17 +164,17 @@ Felhasználóként: Kommentelés egy megoldásra.
 ![Regisztráció](/docpics/pages/register.jpg)
 
 
-**Profil**
+**Profil** **DONE**
 
 ![Profil](/docpics/pages/profile.jpg)
 
 
-**Új projekt**
+**Új projekt** **DONE**
 
 ![Új projekt](/docpics/pages/new_project.jpg)
 
 
-**Projekt szerkesztése**
+**Projekt szerkesztése** 
 
 ![Projekt szerkesztése](/docpics/pages/manage_project.jpg)
 

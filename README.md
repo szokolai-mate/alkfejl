@@ -144,15 +144,19 @@ Felhasználóként: Kommentelés egy megoldásra.
 
 `GET /<PROJECT_ID>/manage` - projekt szerkesztése
 
+`POST /show/<PROJECT_ID>/comment` - új projekt komment adatai
+`POST /<PROJECT_ID>/show/<PROBLEM_ID>/comment` - új probléma komment adatai
+`POST /<PROJECT_ID>/<PROBLEM_ID>/show/<SOLUTION_ID>/comment` - új projekt komment adatai
+
 
 ##Oldalvázlatok
 
-**Főoldal**
+**Főoldal** **DONE**
 
 ![Főoldal](/docpics/pages/főoldal.jpg)
 
 
-**Regisztráció**
+**Regisztráció** **DONE**
 
 ![Regisztráció](/docpics/pages/register.jpg)
 

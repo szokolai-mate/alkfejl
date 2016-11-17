@@ -23,20 +23,20 @@ A leírás alapján a szerepkörök és a hozzájuk tartozó **funkcionális kö
 - problémák megtekintése
 - megoldások megtekintése
 - az ezekhez tartozó kommentek megtekintése
-- _bejelentkezés (exklúzív)_
+- _bejelentkezés (exklúzív)_ **DONE**
 
 **Felhasználó (User)**
-- új probléma nyitása
-- megoldás beküldése
+- új probléma nyitása **DONE**
+- megoldás beküldése **DONE**
 - kommentelés
 - szavazás
-- új projekt nyitása
-- kijelentkezés
+- új projekt nyitása **DONE**
+- kijelentkezés **DONE**
 - saját komment szerkesztése
 - saját megoldás szerkesztése
 - saját probléma szerkesztése
 - saját szavazás visszavonása
-- profil megtekintése
+- profil megtekintése **DONE**
 
 **Megbízott (Trusted)**
 - megoldás elfogadása
@@ -46,12 +46,12 @@ A leírás alapján a szerepkörök és a hozzájuk tartozó **funkcionális kö
 - probléma szerkesztése
 
 **Tulajdonos (Owner)**
-- új megbízott felvétele
-- megbízott törlése
-- megbízottak megtekintése
-- projekt inaktivizálása
-- projekt újranyitása
-- projekt szerkesztése
+- új megbízott felvétele **DONE**
+- megbízott törlése **DONE**
+- megbízottak megtekintése **DONE**
+- projekt inaktivizálása **DONE**
+- projekt újranyitása **DONE**
+- projekt szerkesztése **DONE**
 
 A szerepkörök kibővítik egymást a következő sorrendben:
 **Vendég <- Felhasználó <- Megbízott <- Tulajdonos** , azaz minden funkció amit a bal oldalon szereplő szerepkör része, a jobb oldalon szereplőé is. (Például Megbízott is tud megoldást beküldeni.) Ez alól kivétel a regisztráció, mivel egy felhasználó már regisztrálva van.
@@ -119,12 +119,12 @@ Felhasználóként: Kommentelés egy megoldásra.
 
 `POST /search` - keresés projektek között -> főoldal
 
-`GET /profile` - profil oldal
+`GET /profile/<USER_ID>` - profil oldal
 
 
-`GET /<PROJEKT_ID>` - kitüntetett projekt
+`GET /show/<PROJEKT_ID>` - kitüntetett projekt
 
-`GET /<PROJEKT_ID/<PROBLEM_ID>` - kitüntetett probléma
+`GET /<PROJEKT_ID/show/<PROBLEM_ID>` - kitüntetett probléma
 
 
 `GET /new` - új projekt oldal
@@ -144,35 +144,39 @@ Felhasználóként: Kommentelés egy megoldásra.
 
 `GET /<PROJECT_ID>/manage` - projekt szerkesztése
 
+`POST /show/<PROJECT_ID>/comment` - új projekt komment adatai
+`POST /<PROJECT_ID>/show/<PROBLEM_ID>/comment` - új probléma komment adatai
+`POST /<PROJECT_ID>/<PROBLEM_ID>/show/<SOLUTION_ID>/comment` - új projekt komment adatai
+
 
 ##Oldalvázlatok
 
-**Főoldal**
+**Főoldal** **DONE**
 
 ![Főoldal](/docpics/pages/főoldal.jpg)
 
 
-**Regisztráció**
+**Regisztráció** **DONE**
 
 ![Regisztráció](/docpics/pages/register.jpg)
 
 
-**Profil**
+**Profil** **DONE**
 
 ![Profil](/docpics/pages/profile.jpg)
 
 
-**Új projekt**
+**Új projekt** **DONE**
 
 ![Új projekt](/docpics/pages/new_project.jpg)
 
 
-**Projekt szerkesztése**
+**Projekt szerkesztése** **DONE**
 
 ![Projekt szerkesztése](/docpics/pages/manage_project.jpg)
 
 
-**Kiválasztott projekt**
+**Kiválasztott projekt** **DONE**
 
 ![Kiválasztott projekt](/docpics/pages/project.jpg)
 

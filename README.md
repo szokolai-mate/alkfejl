@@ -40,8 +40,8 @@ A leírás alapján a szerepkörök és a hozzájuk tartozó **funkcionális kö
 
 **Megbízott (Trusted)**
 - megoldás elfogadása
-- probléma lezárása _removed_
-- probléma újranyitása _removed_
+- probléma lezárása
+- probléma újranyitása
 - megoldás szerkesztése
 - probléma szerkesztése
 
@@ -51,10 +51,7 @@ A leírás alapján a szerepkörök és a hozzájuk tartozó **funkcionális kö
 - megbízottak megtekintése **DONE**
 - projekt inaktivizálása **DONE**
 - projekt újranyitása **DONE**
-- projekt szerkesztése
-
-- probléma lezárása 
-- probléma újranyitása
+- projekt szerkesztése **DONE**
 
 A szerepkörök kibővítik egymást a következő sorrendben:
 **Vendég <- Felhasználó <- Megbízott <- Tulajdonos** , azaz minden funkció amit a bal oldalon szereplő szerepkör része, a jobb oldalon szereplőé is. (Például Megbízott is tud megoldást beküldeni.) Ez alól kivétel a regisztráció, mivel egy felhasználó már regisztrálva van.
@@ -174,7 +171,7 @@ Felhasználóként: Kommentelés egy megoldásra.
 ![Új projekt](/docpics/pages/new_project.jpg)
 
 
-**Projekt szerkesztése** 
+**Projekt szerkesztése** **DONE**
 
 ![Projekt szerkesztése](/docpics/pages/manage_project.jpg)
 

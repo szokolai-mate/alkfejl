@@ -19,31 +19,28 @@ A projekt tulajdonosa kijelölhet felhasználókat megbízottjaiként, akik a pr
 A leírás alapján a szerepkörök és a hozzájuk tartozó **funkcionális követelmények** a kovetkezők:
 
 **Vendég (Guest)** 
-- projektek megtekintése
-- problémák megtekintése
-- megoldások megtekintése
-- az ezekhez tartozó kommentek megtekintése
+- projektek megtekintése  **DONE**
+- problémák megtekintése  **DONE**
+- megoldások megtekintése  **DONE**
+- az ezekhez tartozó kommentek megtekintése  **DONE**
 - _bejelentkezés (exklúzív)_ **DONE**
+- profil megtekintése **DONE**
 
 **Felhasználó (User)**
 - új probléma nyitása **DONE**
 - megoldás beküldése **DONE**
-- kommentelés
-- szavazás
+- kommentelés  **DONE**
+- szavazás  **DONE**
 - új projekt nyitása **DONE**
 - kijelentkezés **DONE**
-- saját komment szerkesztése
-- saját megoldás szerkesztése
-- saját probléma szerkesztése
-- saját szavazás visszavonása
-- profil megtekintése **DONE**
+- saját megoldás szerkesztése  **DONE**
+- saját probléma szerkesztése **DONE**
+- saját szavazás módosítása **DONE**
 
 **Megbízott (Trusted)**
-- megoldás elfogadása
-- probléma lezárása
-- probléma újranyitása
-- megoldás szerkesztése
-- probléma szerkesztése
+- megoldás elfogadása  **DONE**
+- megoldás szerkesztése **DONE**
+- probléma szerkesztése **DONE**
 
 **Tulajdonos (Owner)**
 - új megbízott felvétele **DONE**
@@ -109,17 +106,21 @@ Felhasználóként: Kommentelés egy megoldásra.
 
 `GET /` - főoldal, projektek
 
-`POST /login` - belépési adatok -> főoldal
+`POST /login` - belépési adatok -> _beléptetés_ -> főoldal
 
 `GET /register` - regisztrációs oldal
 
 `POST /register` - regisztrációs adatok
+
+`GET /logout` - _kiléptetés_ -> főoldal
+
 
 
 
 `POST /search` - keresés projektek között -> főoldal
 
 `GET /profile/<USER_ID>` - profil oldal
+
 
 
 `GET /show/<PROJEKT_ID>` - kitüntetett projekt
@@ -142,11 +143,54 @@ Felhasználóként: Kommentelés egy megoldásra.
 `POST /<PROJEKT_ID/<PROBLEM_ID>/new` - új megoldás adatai
 
 
-`GET /<PROJECT_ID>/manage` - projekt szerkesztése
+
+`GET /show/<PROJECT_ID>/edit` - projekt szerkesztése
+
+`POST /show/<PROJECT_ID>/edit` - projekt szerkesztésének adatai
+
+`POST /show/<PROJECT_ID>/trusted/add` - megbízott hozzáadása
+
+`GET /show/<PROJECT_ID>/trusted/<FELHASZNÁLÓ_ID>/remove` - megbízott törlése
+
+
+
+`GET /<PROJECT_ID>/show/<PROBLEM_ID>/edit` - probléma szerkesztése
+
+`POST /<PROJECT_ID>/show/<PROBLEM_ID>/edit` - probléma szerkesztésének adatai
+
+
+`GET /<PROJECT_ID>/<PROBLEM_ID>/show/<SOLUTION_ID>/edit` - megoldás szerkesztése
+
+`POST /<PROJECT_ID>/<PROBLEM_ID>/show/<SOLUTION_ID>/edit` - megoldás szerkesztésének adatai
+
+
 
 `POST /show/<PROJECT_ID>/comment` - új projekt komment adatai
+
 `POST /<PROJECT_ID>/show/<PROBLEM_ID>/comment` - új probléma komment adatai
+
 `POST /<PROJECT_ID>/<PROBLEM_ID>/show/<SOLUTION_ID>/comment` - új projekt komment adatai
+
+
+`GET /<PROJECT_ID>/<PROBLEM_ID>/show/<SOLUTION_ID>/accept` - megoldás elfogadása/elfogadásának visszavonása
+
+
+`POST /show/<PROJECT_ID>/vote/<COMMENT_ID>` - szavazás probléma kommentjére
+
+
+
+`POST /<PROJECT_ID>/show/<PROBLEM_ID>/vote` - szavazás problémára
+
+`POST /<PROJECT_ID>/show/<PROBLEM_ID>/vote/<COMMENT_ID>` - szavazás probléma kommentjére
+
+
+
+`POST /<PROJECT_ID>/<PROBLEM_ID>/show/<SOLUTION_ID>/vote` - szavazás megoldásra
+
+`POST /<PROJECT_ID>/<PROBLEM_ID>/show/<SOLUTION_ID>/vote/<COMMENT_ID>` - szavazás megoldás kommentjére
+
+
+
 
 
 ##Oldalvázlatok
@@ -181,17 +225,17 @@ Felhasználóként: Kommentelés egy megoldásra.
 ![Kiválasztott projekt](/docpics/pages/project.jpg)
 
 
-**Új probléma beküldése**
+**Új probléma beküldése** **DONE**
 
 ![Új probléma beküldése](/docpics/pages/new_problem.jpg)
 
 
-**Probléma megoldásai**
+**Probléma megoldásai** **DONE**
 
 ![Probléma válaszai](/docpics/pages/problem.jpg)
 
 
-**Új megoldás**
+**Új megoldás** **DONE**
 
 ![Új válasz](/docpics/pages/new_solution.jpg)
 

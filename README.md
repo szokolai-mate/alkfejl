@@ -39,8 +39,8 @@ A leírás alapján a szerepkörök és a hozzájuk tartozó **funkcionális kö
 
 **Megbízott (Trusted)**
 - megoldás elfogadása  **DONE**
-- megoldás szerkesztése
-- probléma szerkesztése
+- megoldás szerkesztése **DONE**
+- probléma szerkesztése **DONE**
 
 **Tulajdonos (Owner)**
 - új megbízott felvétele **DONE**

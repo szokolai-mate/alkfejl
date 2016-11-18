@@ -23,13 +23,19 @@ Route.post('/search','PublicController.search')
 Route.get('/new','ProjectController.createproject')
 Route.post('/new','ProjectController.doCreateproject')
 
-Route.get('/show/:projectID/new','ProjectController.createproblem')
-Route.post('/show/:projectID/new','ProjectController.doCreateproblem')
+Route.get('/:projectID/new','ProjectController.createproblem')
+Route.post('/:projectID/new','ProjectController.doCreateproblem')
 
 Route.post('/show/:projectID/comment','ProjectController.addProjectComment')
+Route.post('/:projectID/show/:problemID/comment','ProjectController.addProblemComment')
+Route.post('/:projectID/:problemID/show/:solutionID/comment','ProjectController.addSolutionComment')
 
 Route.get('/show/:projectID/edit','ProjectController.editProject')
 Route.post('/show/:projectID/edit','ProjectController.doEditProject')
+Route.get('/:projectID/show/:problemID/edit','ProjectController.editProblem')
+Route.post('/:projectID/show/:problemID/edit','ProjectController.doEditProblem')
+Route.get('/:projectID/:problemID/show/:solutionID/edit','ProjectController.editSolution')
+Route.post('/:projectID/:problemID/show/:solutionID/edit','ProjectController.doEditSolution')
 
 Route.get('/show/:projectID','PublicController.showProject')
 Route.get('/show/','PublicController.redirect')
@@ -52,5 +58,9 @@ Route.get('/profile/:userID','PublicController.profile')
 Route.get('/profile/','PublicController.redirect')
 
 Route.post('/show/:projectID/vote/:commentID','ProjectController.voteProjectComment')
-Route.post('/:projectID/show/:problemID/vote','ProjectController.')
-Route.post('/:projectID/show/:problemID/vote/:commentID','ProjectController.')
+Route.post('/:projectID/show/:problemID/vote/:commentID','ProjectController.voteProblemComment')
+Route.post('/:projectID/show/:problemID/vote','ProjectController.voteProblem')
+Route.post('/:projectID/:problemID/show/:solutionID/vote/:commentID','ProjectController.voteSolutionComment')
+Route.post('/:projectID/:problemID/show/:solutionID/vote','ProjectController.voteSolution')
+
+Route.get('/:projectID/:problemID/show/:solutionID/accept','ProjectController.acceptSolution')

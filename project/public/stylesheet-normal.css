@@ -93,8 +93,9 @@ header .item{
 
 
 header .to-right{
-    display: inline;
-    width:30%;
+    float: right;
+    width: fit-content;
+    max-width: 50%;
     text-align: right;
     position: fixed;
     right: 0px;
@@ -136,6 +137,31 @@ header .to-left{
     display: inline-block;
     text-align: center;
 }
+
+.problem-stats{
+    margin: 10px 10px 10px 10px;
+}
+
+.problem-stats .score{
+    position: absolute;
+    font-weight: bold;
+    font-size: 200%;
+    top:27px;
+}
+.problem-stats .voter{
+    height: 50px;
+    width:20px;
+    position: absolute;
+    left:40px;
+}
+.problem-stats .voter .positive-vote{
+    float: none;
+}
+.problem-stats .voter .negative-vote{
+    float: none;
+}
+
+
 
 .button a{
     text-decoration: none ;
@@ -298,7 +324,7 @@ header .to-left{
 
 }
 
-.list-item .owner{
+.owner{
     float:right;
 }
 .list-item .score{
@@ -314,21 +340,24 @@ header .to-left{
     height:20px;
 }
 
-.list-item .solved{
+.solved{
     background: green;
 }
-
 .list-item .own-item{
-    background: #30b090;
+    background: #50c0e0;
     border-radius: 10px;
 }
 
-.list-item .stats{
+.stats{
     padding: 5px 10px 5px 10px;
     border-radius: 10px;
     border: ridge 2px;
     overflow: hidden;
     vertical-align: middle;
+}
+.stats a{
+    text-decoration: none;
+    color:black;
 }
 
 .profile-details {
@@ -392,6 +421,19 @@ header .to-left{
     background: #aaaacc;
     border-radius: 5px;
 }
+
+.accepter{
+    display: inline;
+    font-size: 80%;
+    border: solid 1px;
+    padding:4px;
+    line-height: 20px;
+}
+
+.accepted{
+    background: #00aa66;
+}
+
 
 
 .error-container{

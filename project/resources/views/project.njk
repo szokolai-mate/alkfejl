@@ -55,7 +55,7 @@
 {% if currentUser %}
 <br>
 <div class="button">
-    <a href="/show/{{project.id}}/new">New Problem</a>
+    <a href="/{{project.id}}/new">New Problem</a>
 </div>
 {% endif %}
 <br>
@@ -199,7 +199,7 @@
     {% for problem in problems %}
 <div>
     <input type="checkbox" class="tab-checkbox"  id="{{ problem.title }}">
-    <label for="{{problem.title }}" class="tab name {% if problem.active==0 %}deactivated{% endif %}">
+    <label for="{{problem.title }}" class="tab name {% if problem.active==0 %}deactivated{% endif %} {% if problem.solved>0 %}accepted{% endif %}">
     {{ problem.title }}
     <a href="/{{ project.id }}/show/{{ problem.id }}">
     <div class="tab-link">
@@ -207,19 +207,17 @@
     </a>
     </label>
     <article class="submenu widthOf">
-        <li class="list-item">
+        <li class="list-item {% if problem.solved>0 %}accepted{% endif %}">
         <div>
         <div class="description">
         {% for line in problem.description %}
              {{ line }}
              <br>
-        {% endfor %} 
+        {% endfor %}  
         </div>
         <div class="stats">
         <div class="score">
         {{ problem.score }}
-        </div>
-        <div class="solved-icon {% if problem.solutions>0 %}solved{% endif %}">
         </div>
         <div class = "owner">
         <a href="/profile/{{ problem.ownerID }}">{{ problem.owner.displayName }}</a>

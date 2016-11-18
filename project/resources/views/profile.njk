@@ -58,7 +58,7 @@
 {% endif %}
 <ul class="list">
 {% for problem in problems %}
-     <li class="list-item">
+     <li class="list-item {% if problem.solutions>0 %}accepted{% endif %}">
      <div>
      <a href="/{{ problem.projectID }}/show/{{ problem.id }}">
      <div class="name {% if problem.active==0 %}deactivated{% endif %}">
@@ -69,7 +69,9 @@
         <div class="score">
             {{ problem.score }} 
         </div>
-        <div class="solved-icon {% if problem.solutions>0 %}solved{% endif %}">
+        {% if problem.solutions>0 %}
+        <div class="solved-icon solved">
+        {% endif %}
         </div>
      </div>
      </div>

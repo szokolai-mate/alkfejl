@@ -1,130 +1,352 @@
-{% extends "layout" %}
-
-{% block content %}
+{% extends "layout" %} {% block content %}
 
 <link rel="stylesheet" type="text/css" href="../stylesheet-normal.css">
 
+<style>
+    .accordion article {
+        margin-top: -1px;
+        overflow: hidden;
+        transition: height 0.3s ease-in-out, box-shadow 0.6s linear;
+    }
+</style>
+<div class="to-right">
+<div class="container">
+<div class="problem-stats">
+                                        <div class="score">
+                                            {{ problem.score }}
+                                        </div>
+                                        {% if currentUser %}
+                                        <div class="voter">
+                                              <form action="/{{ project.id }}/show/{{ problem.id }}/vote" method="post">
+                                                {{ csrfField }}
+                                                <input type="checkbox" checked style="display:none;" name="positive">
+                                                <button class="positive-vote {% if problem.voted==1 %}voted{% endif %}"></button>
+                                            </form>
+                                            <form action="/{{ project.id }}/show/{{ problem.id }}/vote" method="post">
+                                                {{ csrfField }}
+                                                <input type="checkbox" style="display:none;" name="positive">
+                                                <button class="negative-vote {% if problem.voted==-1 %}voted{% endif %}"></button>
+                                            </form>
+                                        </div>
+                                        {% endif %}
+                                        <br>
+                                        {% if currentUser.id == problem.ownerID%}
+                                            <br>
+                                            <br>
+                                            <div class="button">
+                                            <a href="/{{project.id}}/show/{{problem.id}}/edit">
+                                            Edit Problem
+                                            </a>
+                                            </div>
+                                        {% else %}
+                                            {% for id in trustedids %}
+
+                                            {% if id == currentUser.id %}
+                                        
+                                            <br>
+                                            <br>
+                                            <div class="button">
+                                            <a href="/{{project.id}}/show/{{problem.id}}/edit">
+                                            Edit Problem
+                                            </a>
+                                            </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% endif %}
+</div>
+</div>
+</div>
+
+
 <div class="to-left project-details">
-<br>
-<a href="/show/{{ project.id }}" class="decorless-link">
-<div class="name back-link">
-<h2>{{ project.title }}</h2>
-</div>
-</a>
-<br>
-<h2>Project description</h2>
-<div class="description">
-{% for line in project.description %}
-            {{ line }}
-            <br>
-{% endfor %}
-</div>
-<br>
+    <br>
+    <a href="/show/{{ project.id }}" class="decorless-link">
+        <div class="name back-link">
+            <h2>{{ project.title }}</h2>
+        </div>
+    </a>
+    <br>
+    <h2>Project description</h2>
+    <div class="description">
+        {% for line in project.description %} {{ line }}
+        <br> {% endfor %}
+    </div>
+    <br>
 </div>
 
 <div class="content">
-<h1>{{ problem.title }}</h1>
-<br>
-<div class="description">
-{% for line in problem.description %}
-            {{ line }}
-            <br>
-{% endfor %}
-</div>
-<br>
-    
-<div class="container">
-    
-     {% if problemcomments=="" %}
-        <h2>No comments yet</h2>
-        {% else %}
-        <h2>Comments</h2>
-    {% endif %}
-    <div class="container comment-list">
-        {% if problemcomments!="" %}
-        <ul class="list">
-        {% for comment in problemcomments %}
-            <li class="list-item">
-            <div {% if currentUser.id==comment.ownerID %} class="own-item" {% endif %}>
-            <div class="description">
-            {% for line in comment.content %}
-            {{ line }}
-            <br>
-            {% endfor %}
-            </div>
-            <div class="stats">
-            <div class = "owner">
-            <a href="/profile/{{ comment.ownerID }}">{{ comment.owner.displayName }}</a>
-            </div>
-            </div>
-            </div>
-            </li>
-        {% endfor %}
-        </ul>
-        {% endif %}
-        <br>
+    <h1>{{ problem.title }}</h1>
+    <br>
+    <div class="description">
+        {% for line in problem.description %} {{ line }}
+        <br> {% endfor %}
     </div>
-    {% if currentUser %}
+    <br>
+    <div class="stats">
+        <div class="owner">
+                                            <a href="/profile/{{ problem.owner.id }}">{{ problem.owner.displayName }}</a>
+                                        </div>
+                                        </div>
+    
     <div class="container">
-        <form id="newcomment-form" method="post" action="/show/{{ project.id }}/comment">
-            {{ csrfField }}
-            <label for="content">Your Comment</label>
-            <textarea name="content" placeholder="Your comment" form="newcomment-form" rows="5" required>{{ old('content') }}</textarea>
-            <br>
-            <input type="submit" value="Comment">
-        </form>
-    </div>
-    {% endif %}
-    <br>
-</div>
-
-<div class="container">
-    <div class="container solution-list">
-    {% if solutions=="" %}
-        {% if currentUser %}
-        <h2>No solutions yet, be the first!</h2> 
+        <div class="accordion" >
+            <div name="comments">
+                {% if comments=="" %} {% if currentUser %}
+                <input id="ac-1" type="checkbox" class="tab-checkbox" />
+                <label for="ac-1" class="tab empty">
+        No comments yet, be the first!
         {% else %}
-        <h2>No solutions yet</h2>
+        <input id="ac-1" type="checkbox" class="tab-checkbox" disabled />
+        <label for="ac-1" class="tab empty">
+        No comments yet
         {% endif %}
-    {% else %}
-    <ul class="list">
-    {% for solution in solutions %}
-        <li class="list-item">
-        <div class="{% if solution.active==0 %}deactivated{% endif %}{% if solution.accepted==1 %} accepted{% endif %}">
-        <div class="description">
-        {% for line in solution.description %}
-            {{ line }}
+		</label> {% else %}
+                <input id="ac-1" type="checkbox" class="tab-checkbox" checked />
+                <label for="ac-1" class="tab">
+		Comments
+		</label> {% endif %}
+                <article class="submenu widthOf" >
+                    <div class="container comment-list">
+                        {% if comments!="" %}
+                        <ul class="list">
+                            {% for comment in comments %}
+                            <li class="list-item">
+                                <div {% if currentUser.id==comment.ownerID %} class="own-item" {% endif %}>
+                                    <div class="description">
+                                        {% for line in comment.content %} {{ line }}
+                                        <br> {% endfor %}
+                                    </div>
+                                    <div class="stats">
+                                        <div class="score">
+                                            {{ comment.score }}
+                                        </div>
+                                        {% if currentUser %}
+                                        <div class="voter">
+                                            <form action="/{{ project.id }}/show/{{ problem.id }}/vote/{{ comment.id }}" method="post">
+                                                {{ csrfField }}
+                                                <input type="checkbox" style="display:none;" name="positive">
+                                                <button class="negative-vote {% if comment.voted==-1 %}voted{% endif %}"></button>
+                                            </form>
+                                            <form action="/{{ project.id }}/show/{{ problem.id }}/vote/{{ comment.id }}" method="post">
+                                                {{ csrfField }}
+                                                <input type="checkbox" checked style="display:none;" name="positive">
+                                                <button class="positive-vote {% if comment.voted==1 %}voted{% endif %}"></button>
+                                            </form>
+                                        </div>
+                                        {% endif %}
+                                        <div class="owner">
+                                            <a href="/profile/{{ comment.ownerID }}">{{ comment.owner.displayName }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                        <br>
+                    </div>
+                    {% if currentUser %}
+                    <div class="container">
+                        <form id="newcomment-form" method="post" action="/{{ project.id }}/show/{{ problem.id }}/comment">
+                            {{ csrfField }}
+                            <label for="content">Your Comment</label>
+                            <textarea name="content" placeholder="Your comment" form="newcomment-form" rows="5" required>{{ old('content') }}</textarea>
+                            <br>
+                            <input type="submit" value="Comment">
+                        </form>
+                    </div>
+                    {% endif %}
+                    <br>
+                </article>
+            </div>
+
+            <div class="container">
+                {% if solutions=="" %}
+                <input id="ac-2" type="checkbox" class="tab-checkbox" disabled />
+                <label for="ac-2" class="tab empty">
+        {% if currentUser %}
+        No solutions yet, got one to contribute?
+        {% else %}
+        No solutions yet
+        {% endif %}
+		</label> {% else %}
+                <input id="ac-2" type="checkbox" class="tab-checkbox" />
+                <label for="ac-2" class="tab">
+		Solutions
+		</label> {% endif %}
+                <article class="submenu widthOf" >
+                    <div class="container solution-list">
+
+                        <ul class="list">
+                            {% for solution in solutions %}
+                            <li class="list-item {% if solution.active==0 %}deactivated{% endif %}{% if solution.accepted==1 %} accepted{% endif %}">
+                                <div class="">
+                                    <div class="description ">
+                                        {% for line in solution.description %}
+                                            {{ line }}
+                                            <br>
+                                         {% endfor %}
+                                    </div>
+                                    </a>
+                                    <div class="stats">
+                                        <div class="score">
+                                                                    {{ solution.score }}
+                                                                </div>
+                                                                {% if currentUser %}
+                                                                <div class="voter">
+                                                                    <form action="/{{ project.id }}/{{ problem.id }}/show/{{ solution.id }}/vote" method="post">
+                                                                        {{ csrfField }}
+                                                                        <input type="checkbox" style="display:none;" name="positive">
+                                                                        <button class="negative-vote {% if solution.voted==-1 %}voted{% endif %}"></button>
+                                                                    </form>
+                                                                    <form action="/{{ project.id }}/{{ problem.id }}/show/{{ solution.id }}/vote" method="post">
+                                                                        {{ csrfField }}
+                                                                        <input type="checkbox" checked style="display:none;" name="positive">
+                                                                        <button class="positive-vote {% if solution.voted==1 %}voted{% endif %}"></button>
+                                                                    </form>
+                                                                </div>
+                                                                {% endif %}
+                                        {% for id in trustedids %}
+
+                                        {% if id == currentUser.id %}
+                                        {% if solution.accepted==0 %}
+                                        <a href="/{{ project.id }}/{{ problem.id }}/show/{{ solution.id }}/accept">
+                                        <div class="accepter button login">
+                                            Accept this solution
+                                        </div>
+                                        </a>
+                                        {% else %}
+                                        <a href="/{{ project.id }}/{{ problem.id }}/show/{{ solution.id }}/accept">
+                                        <div class="accepter button logout">
+                                            De-accept this solution
+                                        </div>
+                                        </a>
+                                        {% endif %}
+                                        {% endif %}
+                                        {% endfor %}
+                                        <div class="owner">
+                                            <a href="/profile/{{ comment.ownerID }}">
+                                            {{ solution.owner.displayName }}
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                    <div style="margin-top:10px;">
+                                             {% if currentUser.id == solution.ownerID%}
+                                            <div class="button" style="max-width:50%; margin:auto;">
+                                            <a href="/{{project.id}}/{{problem.id}}/show/{{ solution.id }}/edit">
+                                            Edit Solution
+                                            </a>
+                                            </div>
+                                        {% else %}
+                                            {% for id in trustedids %}
+
+                                            {% if id == currentUser.id %}
+                                        
+                                            <div class="button"  style="max-width:50%; margin:auto;">
+                                            <a href="/{{project.id}}/{{problem.id}}/show/{{ solution.id }}/edit">
+                                            Edit Solution
+                                            </a>
+                                            </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% endif %}
+                                    </div>
+
+                                    <div class="container"
+                                    <div class="accordion">
+                                        {% if solution.comments=="" %} 
+                                            {% if currentUser %}
+                                                <input id="ac-solution-{{ solution.id }}" type="checkbox" class="tab-checkbox" />
+                                                <label for="ac-solution-{{ solution.id }}" class="tab empty">
+                                                No comments yet, be the first!
+                                            {% else %}
+                                                <input id="ac-solution-{{ solution.id }}" type="checkbox" class="tab-checkbox" disabled />
+                                                 <label for="ac-solution-{{ solution.id }}" class="tab empty">
+                                                    No comments yet
+                                                {% endif %}
+		                                        </label> 
+                                     {% else %}
+                                        <input id="ac-solution-{{ solution.id }}" type="checkbox" class="tab-checkbox" />
+                                         <label for="ac-solution-{{ solution.id }}" class="tab">
+                                        {{ solution.owner.displayName }}'s solution's comments
+		                                </label>
+                                     {% endif %}
+                                    <article class="submenu widthOf">
+                                        <div class="container comment-list">
+                                                {% if solution.comments!="" %}
+                                                <ul class="list">
+                                                    {% for comment in solution.comments %}
+                                                    <li class="list-item">
+                                                        <div {% if currentUser.id==comment.ownerID %} class="own-item" {% endif %}>
+                                                            <div class="description">
+                                                                {% for line in comment.content %} {{ line }}
+                                                                <br> {% endfor %}
+                                                            </div>
+                                                            <div class="stats">
+                                                                <div class="score">
+                                                                    {{ comment.score }}
+                                                                </div>
+                                                                {% if currentUser %}
+                                                                <div class="voter">
+                                                                    <form action="/{{ project.id }}/{{ problem.id }}/show/{{ solution.id }}/vote/{{ comment.id }}" method="post">
+                                                                        {{ csrfField }}
+                                                                        <input type="checkbox" style="display:none;" name="positive">
+                                                                        <button class="negative-vote {% if comment.voted==-1 %}voted{% endif %}"></button>
+                                                                    </form>
+                                                                    <form action="/{{ project.id }}/{{ problem.id }}/show/{{ solution.id }}/vote/{{ comment.id }}" method="post">
+                                                                        {{ csrfField }}
+                                                                        <input type="checkbox" checked style="display:none;" name="positive">
+                                                                        <button class="positive-vote {% if comment.voted==1 %}voted{% endif %}"></button>
+                                                                    </form>
+                                                                </div>
+                                                                {% endif %}
+                                                                <div class="owner">
+                                                                    <a href="/profile/{{ comment.ownerID }}">{{ comment.owner.displayName }}</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    {% endfor %}
+                                                </ul>
+                                                {% endif %}
+                                                <br>
+                                            </div>
+
+                                        {% if currentUser %}
+                                             <div class="container">
+                                                <form id="newsolutioncomment-form-{{ solution.id }}" method="post" action="/{{ project.id }}/{{ problem.id }}/show/{{ solution.id }}/comment">
+                                                  {{ csrfField }}
+                                                  <label for="solutioncommentcontent">Your Comment</label>
+                                                  <textarea name="solutioncommentcontent" placeholder="Your comment" form="newsolutioncomment-form-{{ solution.id }}" rows="5" required>{{ old('solutioncommentcontent') }}</textarea>
+                                                  <br>
+                                                  <input type="submit" value="Comment">
+                                                 </form>
+                                            </div>
+                                        {% endif %}
+                                        <br>
+                                    </article>
+                                    </div>
+                                    </div>
+                            </li>
+                            <br>
+                            {% endfor %}
+                        </ul>
+                        <br>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <div class="container">
+            {% if currentUser %}
             <br>
-        {% endfor %}
+            <div class="button login">
+                <a href="/{{ project.id }}/{{ problem.id }}/new">New Solution</a>
+            </div>
+            <br> {% endif %}
         </div>
-        </a>
-        <div class="stats">
-        <div class = "owner">
-        <a href="/profile/{{ comment.ownerID }}">
-        {{ solution.owner.displayName }}
-        </a>
-        </div>
-        </div>
-        </div>
-        </li>
-    {% endfor %}
-    </ul>
-    <br>
-    {% endif %}
-    </div>
 
-<div class="container">
-    {% if currentUser %}
-        <br>
-        <div class="button login">
-        <a href="/{{ project.id }}/{{ problem.id }}/new">New Solution</a>
-        </div>
-        <br>
-    {% endif %}
-</div>
 
-</div>
-
-</div>
-
-{% endblock %}
+        {% endblock %}

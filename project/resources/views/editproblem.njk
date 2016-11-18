@@ -1,0 +1,47 @@
+{% extends "layout" %}
+
+{% block content %}
+
+<div class="to-left project-details">
+<h2>{{ project.title }}</h2>
+<br>
+<div class="description">
+{% for line in project.description %}
+     {{ line }}
+     <br>
+{% endfor %}
+</div>
+</div>
+
+<div class="content">
+<div class="form-container">
+<form id="createproblem-form" method="post">
+  {{ csrfField }}
+
+<h1>Edit Problem</h1>
+<br>
+<label for="problemtitle">Problem title</label>
+<br>
+<input type="text" name="problemtitle" placeholder="Problem title" required value="{{ problem.title }}">
+<br>
+<label for="description">Problem Description</label>
+<br>
+<textarea name="description" placeholder="Problem Description" form="createproblem-form" rows="40" cols="100" required>{{ problem.description }}</textarea>
+<br>
+<br>
+<input type="submit" value="Edit Problem" class="button newproject">
+</form>
+</div>
+{% if old('errors') %}
+          <div class="error-container">
+            <div class="panel-body">
+              <ul>
+                {% for error in old('errors') %}
+                <li>{{ error.message }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+{% endif %}    
+</div>
+{% endblock %}

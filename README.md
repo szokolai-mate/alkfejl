@@ -197,47 +197,42 @@ Felhasználóként: Kommentelés egy megoldásra.
 
 **Főoldal** **DONE**
 
-![Főoldal](/docpics/pages/főoldal.jpg)
+![Főoldal](/docpics/pages/f_oldal.jpg)
 
 
 **Regisztráció** **DONE**
 
-![Regisztráció](/docpics/pages/register.jpg)
+![Regisztráció](/docpics/pages/register_new.jpg)
 
 
 **Profil** **DONE**
 
-![Profil](/docpics/pages/profile.jpg)
+![Profil](/docpics/pages/profile_new.jpg)
 
 
 **Új projekt** **DONE**
 
-![Új projekt](/docpics/pages/new_project.jpg)
-
-
-**Projekt szerkesztése** **DONE**
-
-![Projekt szerkesztése](/docpics/pages/manage_project.jpg)
+![Új projekt](/docpics/pages/new_project_new.jpg)
 
 
 **Kiválasztott projekt** **DONE**
 
-![Kiválasztott projekt](/docpics/pages/project.jpg)
+![Kiválasztott projekt](/docpics/pages/project_new.jpg)
 
 
 **Új probléma beküldése** **DONE**
 
-![Új probléma beküldése](/docpics/pages/new_problem.jpg)
+![Új probléma beküldése](/docpics/pages/new_problem_new.jpg)
 
 
 **Probléma megoldásai** **DONE**
 
-![Probléma válaszai](/docpics/pages/problem.jpg)
+![Probléma válaszai](/docpics/pages/problem_new.jpg)
 
 
 **Új megoldás** **DONE**
 
-![Új válasz](/docpics/pages/new_solution.jpg)
+![Új válasz](/docpics/pages/new_solution_new.jpg)
 
 
 ##Adatbázisterv

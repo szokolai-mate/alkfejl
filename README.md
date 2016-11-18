@@ -106,11 +106,14 @@ Felhasználóként: Kommentelés egy megoldásra.
 
 `GET /` - főoldal, projektek
 
-`POST /login` - belépési adatok -> főoldal
+`POST /login` - belépési adatok -> _beléptetés_ -> főoldal
 
 `GET /register` - regisztrációs oldal
 
 `POST /register` - regisztrációs adatok
+
+`GET /logout` - _kiléptetés_ -> főoldal
+
 
 
 
@@ -139,11 +142,33 @@ Felhasználóként: Kommentelés egy megoldásra.
 `POST /<PROJEKT_ID/<PROBLEM_ID>/new` - új megoldás adatai
 
 
-`GET /<PROJECT_ID>/manage` - projekt szerkesztése
+`GET /show/<PROJECT_ID>/edit` - projekt szerkesztése
+`POST /show/<PROJECT_ID>/edit` - projekt szerkesztésének adatai
+`POST /show/<PROJECT_ID>/trusted/add` - megbízott hozzáadása
+`GET /show/<PROJECT_ID>/trusted/<FELHASZNÁLÓ_ID>/remove` - megbízott törlése
+
+
+`GET /<PROJECT_ID>/show/<PROBLEM_ID>/edit` - probléma szerkesztése
+`POST /<PROJECT_ID>/show/<PROBLEM_ID>/edit` - probléma szerkesztésének adatai
+
+`GET /<PROJECT_ID>/<PROBLEM_ID>/show/<SOLUTION_ID>/edit` - megoldás szerkesztése
+`POST /<PROJECT_ID>/<PROBLEM_ID>/show/<SOLUTION_ID>/edit` - megoldás szerkesztésének adatai
 
 `POST /show/<PROJECT_ID>/comment` - új projekt komment adatai
 `POST /<PROJECT_ID>/show/<PROBLEM_ID>/comment` - új probléma komment adatai
 `POST /<PROJECT_ID>/<PROBLEM_ID>/show/<SOLUTION_ID>/comment` - új projekt komment adatai
+
+`GET /<PROJECT_ID>/<PROBLEM_ID>/show/<SOLUTION_ID>/accept` - megoldás elfogadása/elfogadásának visszavonása
+
+`POST /show/<PROJECT_ID>/vote/<COMMENT_ID>` - szavazás probléma kommentjére
+
+`POST /<PROJECT_ID>/show/<PROBLEM_ID>/vote` - szavazás problémára
+`POST /<PROJECT_ID>/show/<PROBLEM_ID>/vote/<COMMENT_ID>` - szavazás probléma kommentjére
+
+`POST /<PROJECT_ID>/<PROBLEM_ID>/show/<SOLUTION_ID>/vote` - szavazás megoldásra
+`POST /<PROJECT_ID>/<PROBLEM_ID>/show/<SOLUTION_ID>/vote/<COMMENT_ID>` - szavazás megoldás kommentjére
+
+
 
 
 ##Oldalvázlatok

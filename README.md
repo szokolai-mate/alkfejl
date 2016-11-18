@@ -19,27 +19,26 @@ A projekt tulajdonosa kijelölhet felhasználókat megbízottjaiként, akik a pr
 A leírás alapján a szerepkörök és a hozzájuk tartozó **funkcionális követelmények** a kovetkezők:
 
 **Vendég (Guest)** 
-- projektek megtekintése
-- problémák megtekintése
-- megoldások megtekintése
-- az ezekhez tartozó kommentek megtekintése
+- projektek megtekintése  **DONE**
+- problémák megtekintése  **DONE**
+- megoldások megtekintése  **DONE**
+- az ezekhez tartozó kommentek megtekintése  **DONE**
 - _bejelentkezés (exklúzív)_ **DONE**
+- profil megtekintése **DONE**
 
 **Felhasználó (User)**
 - új probléma nyitása **DONE**
 - megoldás beküldése **DONE**
-- kommentelés
-- szavazás
+- kommentelés  **DONE**
+- szavazás  **DONE**
 - új projekt nyitása **DONE**
 - kijelentkezés **DONE**
-- saját komment szerkesztése
-- saját megoldás szerkesztése
-- saját probléma szerkesztése
-- saját szavazás visszavonása
-- profil megtekintése **DONE**
+- saját megoldás szerkesztése  **DONE**
+- saját probléma szerkesztése **DONE**
+- saját szavazás módosítása **DONE**
 
 **Megbízott (Trusted)**
-- megoldás elfogadása
+- megoldás elfogadása  **DONE**
 - probléma lezárása
 - probléma újranyitása
 - megoldás szerkesztése
@@ -181,17 +180,17 @@ Felhasználóként: Kommentelés egy megoldásra.
 ![Kiválasztott projekt](/docpics/pages/project.jpg)
 
 
-**Új probléma beküldése**
+**Új probléma beküldése** **DONE**
 
 ![Új probléma beküldése](/docpics/pages/new_problem.jpg)
 
 
-**Probléma megoldásai**
+**Probléma megoldásai** **DONE**
 
 ![Probléma válaszai](/docpics/pages/problem.jpg)
 
 
-**Új megoldás**
+**Új megoldás** **DONE**
 
 ![Új válasz](/docpics/pages/new_solution.jpg)
 

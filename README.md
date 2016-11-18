@@ -39,8 +39,6 @@ A leírás alapján a szerepkörök és a hozzájuk tartozó **funkcionális kö
 
 **Megbízott (Trusted)**
 - megoldás elfogadása  **DONE**
-- probléma lezárása
-- probléma újranyitása
 - megoldás szerkesztése
 - probléma szerkesztése
 

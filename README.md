@@ -276,3 +276,18 @@ Felhasználóként: Kommentelés egy megoldásra.
 
 
 ##Tesztelés
+
+#Hogy telepitsd a Seleniumot
+
+
+#Hogy futtasd a teszteket Seleniumban
+
+
+  - Belépés
+  
+  - Project deaktiválása
+  
+  - Project aktiválása
+  
+  - Szavazás
+  

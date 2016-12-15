@@ -262,7 +262,7 @@ Felhasználóként: Kommentelés egy megoldásra.
 - **Vonzó külalak**
 
 
-##Kliensoldali programrész
+#Kliensoldali programrész
 
   - Akkordion-menü méretének kiszámolása
 
@@ -275,12 +275,12 @@ Felhasználóként: Kommentelés egy megoldásra.
   - Dinamikus keresés
 
 
-##Tesztelés
+#Tesztelés
 
-#Hogy telepitsd a Seleniumot
+##Hogy telepitsd a Seleniumot
 
 
-#Hogy futtasd a teszteket Seleniumban
+##Hogy futtasd a teszteket Seleniumban
 
 
   - Belépés

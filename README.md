@@ -260,3 +260,10 @@ Felhasználóként: Kommentelés egy megoldásra.
 - **Hibás adatok kiszűrése**
 - **Aergonomikus kezelőfelület**
 - **Vonzó külalak**
+
+
+##Kliensoldali programrész
+
+
+
+##Tesztelés

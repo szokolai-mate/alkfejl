@@ -1,35 +1,49 @@
 {% extends "layout" %}
 
+<--! TODO: foglalt email cim -->
+
 {% block content %}
 <div id="form-container" class="content">
 <h1>Join our collective!</h1>
 <br>
 <div class="form-container">
-    <form id="registration-form"  method="post">
+    <form id="registration-form"  method="post" data-toggle="validator">
         {{ csrfField }}
+        <div class="form-group has-feedback">
         <label for="nickname">Nickname</label>
         <br>
         <input type="text" name="nickname" placeholder="Nickname" required value="{{ old('nickname') }}">
+        <div class="help-block with-errors"></div>
+        </div>
+        <div class="form-group has-feedback">
+        <label for="registeremail">E-mail address</label>
         <br>
-        <label for="email">E-mail address</label>
-        <br>
-        <input type="text" name="email" placeholder="E-mail address" required value="{{ old('email') }}"> 
-        <br>
+        <input type="email" name="registeremail" id="registeremail" placeholder="E-mail address" required value="{{ old('email') }}" data-error="Not an e-mail address.">
+        <div class="help-block with-errors"></div>
+        </div> 
+        <div class="form-group has-feedback">
         <label for="repeatemail">Repeat e-mail address</label>
         <br>
-        <input type="text" name="repeatemail" placeholder="Repeat e-mail address" required value="{{ old('repeatemail') }}"> 
+        <input type="email" name="repeatemail" placeholder="Repeat e-mail address" required value="{{ old('repeatemail') }}" required data-match="#registeremail" data-match-error="E-mails do not match." data-error="Not an e-mail address.">
+        <div class="help-block with-errors"></div>
+        </div> 
+        <div class="form-group has-feedback">
+        <label for="registerpassword">Password</label>
         <br>
-        <label for="password">Password</label>
-        <br>
-        <input type="password" name="password" placeholder="Password" required> 
-        <br>
+        <input type="password" name="registerpassword" id="registerpassword" placeholder="Password" required data-minlength="4" data-minlength-error="Password too short.">
+        <div class="help-block with-errors"></div>
+        </div> 
+        <div class="form-group has-feedback">
         <label for="repeatpassword">Repeat password</label>
         <br>
-        <input type="password" name="repeatpassword" placeholder="Repeat password" required>
-        <br>
-        <br>
+        <input type="password" name="repeatpassword" placeholder="Repeat password" required data-match="#registerpassword" data-match-error="Passwords do not match.">
+        <div class="help-block with-errors"></div>
+        </div>
+        <div class="form-group has-feedback">
         <label for="terms" class="visible">"I accept the terms and conditions." </label>
-        <input type="checkbox" required name="terms"> 
+        <input type="checkbox" required name="terms">
+        <div class="help-block with-errors"></div>
+        </div> 
         
         <br>
         <br>

@@ -23,9 +23,9 @@ class UserController {
 
         const rules = {
         nickname: 'required|max:80',
-        email: 'required|unique:users|email',
+        registeremail: 'required|unique:users|email',
         repeatemail: 'required|email|same:email',
-        password: 'required|min:4',
+        registerpassword: 'required|min:4',
         repeatpassword: 'required|same:password'
         ,
         terms: 'required'
@@ -35,7 +35,6 @@ class UserController {
 
 
         if (validation.fails()) {
-        console.log(validation.messages());
         yield request
         .withAll()
         .andWith({errors: validation.messages()})
@@ -46,8 +45,8 @@ class UserController {
 
         const user = new User()
 
-        user.email = registerData.email;
-        user.password = yield Hash.make(registerData.password) 
+        user.email = registerData.registeremail;
+        user.password = yield Hash.make(registerData.registerpassword) 
         user.displayName = registerData.nickname;
         yield user.save()
         

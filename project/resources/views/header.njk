@@ -41,8 +41,8 @@ Welcome, {{ currentUser.displayName }}!
 <div class="item">
 <form method="post" action="/login">
     {{ csrfField }}
-    <input type="text" placeholder="E-mail" name="email" size="7" value="{{ old('email') }}" required>
-    <input type="password" placeholder="Password" name="password" size="7" required>
+    <input type="text" placeholder="E-mail" name="email" size="7" value="{{ old('email') }}" required style="height: 20px;">
+    <input type="password" placeholder="Password" name="password" size="7" required style="height: 20px;">
     <input type="submit" value="Log In" class="button login" >
 </form>
 </div>

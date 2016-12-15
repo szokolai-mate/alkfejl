@@ -264,11 +264,15 @@ Felhasználóként: Kommentelés egy megoldásra.
 
 ##Kliensoldali programrész
 
--Akkordion-menü méretének kiszámolása
--Deaktiváció megerősítése
--Kommentek betöltése lapfrissítés nélkül
--Szavazatok betöltése lapfrissítés nélkül
--Dinamikus keresés
+  - Akkordion-menü méretének kiszámolása
+
+  - Deaktiváció megerősítése
+
+  - Kommentek betöltése lapfrissítés nélkül
+
+  - Szavazatok betöltése lapfrissítés nélkül
+
+  - Dinamikus keresés
 
 
 ##Tesztelés

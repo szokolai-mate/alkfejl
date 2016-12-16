@@ -64,3 +64,8 @@ Route.post('/:projectID/:problemID/show/:solutionID/vote/:commentID','ProjectCon
 Route.post('/:projectID/:problemID/show/:solutionID/vote','ProjectController.voteSolution')
 
 Route.get('/:projectID/:problemID/show/:solutionID/accept','ProjectController.acceptSolution')
+
+
+Route.group('ajax',function(){
+    Route.get('/search','PublicController.ajaxSearch')
+}).prefix('/ajax')

@@ -45,12 +45,10 @@ class PublicController {
     * search(request, response) {
         const searchterm = request.input('searchterm').toLowerCase()
 
-        console.log(searchterm)
-
-
         const projects = yield Project.all();
 
-        var filtered = projects.filter(i => i.title.toLowerCase().indexOf(searchterm) > -1);
+        var prefiltered = projects.filter(i => i.title.toLowerCase().indexOf(searchterm) > -1);
+        var filtered = prefiltered.filter(i => i.active == 1);
 
         if (!filtered.isEmpty()) {
             var c = filtered.size()
@@ -491,6 +489,36 @@ class PublicController {
                 , solutions: solutions.toJSON()
                 , trustedids : trustedids
             })
+    }
+
+    * ajaxSearch(request,response){
+        const searchterm = (request.get())['term'].toLowerCase()
+
+        const projects = yield Project.all();
+
+        var prefiltered = projects.filter(i => i.title.toLowerCase().indexOf(searchterm) > -1);
+        var filtered = prefiltered.filter(i => i.active == 1);
+
+        if (!filtered.isEmpty()) {
+            var c = filtered.size()
+            for (var i = 0; i < c; i += 1) {
+                (filtered.value())[i].attributes.description = ((filtered.value())[i].attributes.description.split("\n"))
+                const owner = yield User.find((filtered.value())[i].attributes.ownerID)
+                if (owner) {
+                    (filtered.value())[i].attributes.owner = owner
+                }
+                if(request.currentUser.id == (filtered.value())[i].attributes.ownerID)
+                {
+                    (filtered.value())[i].attributes.ownitem=1;
+                }
+            }
+        }
+
+        response.ok({
+            success:true,
+            projects: filtered.toJSON()
+        }
+        )
     }
 
 }

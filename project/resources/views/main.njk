@@ -6,15 +6,15 @@
 <div class="container">
 
 <div>
-<form action="/search" method="post">
+<form action="/search" method="post" id="searchform">
     {{ csrfField }}
-<input type="text" placeholder="Search" name="searchterm" size="10">
-<input type="submit" value="Search" class="button search">
+<input type="text" placeholder="Search" name="searchterm" size="10" id="searchterm">
+<input type="submit" value="Search" class="button search" id="searchbutton">
 </form>
 </div>
 <br>
 
-<ul class="list">
+<ul class="list projectlist" id="#projectlist">
 {% for project in projects %}
      <li class="list-item">
      <div class=" {% if currentUser.id==project.ownerID %} own-item {% endif %}">
@@ -40,4 +40,7 @@
 </ul>
 </div>
 </div>
+
+<script src="scripts/search.js"></script>
+
 {% endblock %}

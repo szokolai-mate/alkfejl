@@ -264,15 +264,41 @@ Felhasználóként: Kommentelés egy megoldásra.
 
 #Kliensoldali programrész
 
+  *Minden script-file a public/scripts könyvtárban található szerveroldalon.*
+
   - Akkordion-menü méretének kiszámolása
+  
+    Az akkordion-menük animációjához szükséges a tartalmuk magasságának kiszámolása.
+    
+    A kliensoldali script-file: **accordion.js**
+
 
   - Deaktiváció megerősítése
+  
+    Egy modális ablak jelenik meg egy projekt deaktiválásánál, amin meg kell erősíteni a deaktiválási szándékot.
+    
+    A kliensoldali script-file: **confirm.js**
+
 
   - Kommentek betöltése lapfrissítés nélkül
+  
+    Egy komment beküldése után a hozzátartozó komment-listát dinamikusan frissíti egy AJAX funkció.
+    
+    A kliensoldali script-file: **refresh.js**
 
   - Szavazatok betöltése lapfrissítés nélkül
+  
+    Miután a felhasználó a szavazó gombra kattintással szavazott, a szavazatának beküldését és az érintett szavazati mezőt dinamikusan frissíti egy AJAX funkció.
+    
+    A kliensoldali script-file: **refresh.js**
 
   - Dinamikus keresés
+  
+      A főoldalon megtalálhato projektek között kereső mező dinamikussá tétele AJAX-al.
+      A kulcsszó megváltoztatásával, azaz egy bullentyű lenyomásával a kliens új keresési kérést intéz a szerverhez.
+      
+      A kliensoldali script-file: **search.js**
+
 
 
 #Tesztelés

@@ -1,4 +1,3 @@
-
 function search(term){
     $list = $(".projectlist")
     Promise.resolve(
@@ -33,14 +32,12 @@ function search(term){
             </li>`;
 
         } )
-        console.log(string)
         $list2=$list
         $list2.html(string)
         $list.fadeOut("fast",function(){
         $list.replaceWith($list2)
         $list2.hide().fadeIn("fast")
         })
-        $("body").find('#projectlist').attr("style","background:red;")
 
     })
     .catch(function (error) {
@@ -59,6 +56,3 @@ $("#searchterm").keyup(function(e){
     search($(this).val())
     }
 )
-
-$("#searchterm").attr("style","background:red;")
-$("#projectlist").attr("style","background:red;")

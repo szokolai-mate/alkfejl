@@ -284,13 +284,13 @@ Felhasználóként: Kommentelés egy megoldásra.
   
     Egy komment beküldése után a hozzátartozó komment-listát dinamikusan frissíti egy AJAX funkció.
     
-    A kliensoldali script-file: **refresh.js**
+    A kliensoldali script-file: **refreshproject.js** és **refreshproblem.js**
 
   - Szavazatok betöltése lapfrissítés nélkül
   
     Miután a felhasználó a szavazó gombra kattintással szavazott, a szavazatának beküldését és az érintett szavazati mezőt dinamikusan frissíti egy AJAX funkció.
     
-    A kliensoldali script-file: **refresh.js**
+    A kliensoldali script-file: **refreshproject.js** és **refreshproblem.js**
 
   - Dinamikus keresés
   

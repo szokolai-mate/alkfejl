@@ -264,7 +264,7 @@ Felhasználóként: Kommentelés egy megoldásra.
 
 #Kliensoldali programrész
 
-  *Minden script-file a public/scripts könyvtárban található szerveroldalon.*
+  *Minden script-file a `public/scripts` könyvtárban található szerveroldalon.*
 
   - Akkordion-menü méretének kiszámolása
   
@@ -298,6 +298,11 @@ Felhasználóként: Kommentelés egy megoldásra.
       A kulcsszó megváltoztatásával, azaz egy bullentyű lenyomásával a kliens új keresési kérést intéz a szerverhez.
       
       A kliensoldali script-file: **search.js**
+      
+      **Szekvenciadiagram:**
+      
+      
+      
 
 
 

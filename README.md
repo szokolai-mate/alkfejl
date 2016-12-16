@@ -301,7 +301,7 @@ Felhasználóként: Kommentelés egy megoldásra.
       
       **Szekvenciadiagram:**
       
-      
+      ![Keresés szekvenciadiagramja](/docpics/Untitled.png)
       
 
 

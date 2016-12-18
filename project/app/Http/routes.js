@@ -67,5 +67,16 @@ Route.get('/:projectID/:problemID/show/:solutionID/accept','ProjectController.ac
 
 
 Route.group('ajax',function(){
-    Route.get('/search','PublicController.ajaxSearch')
+    Route.get('/problem/:problemID/comments','PublicController.ajaxProblemComments')
+    Route.get('/solution/:solutionID/comments','PublicController.ajaxSolutionComments')
+    Route.get('/project/:projectID/comments','PublicController.ajaxProjectComments')
+    Route.post('/project/:projectID/comment','ProjectController.ajaxAddProjectComment')
+    Route.post('/solution/:solutionID/comment','ProjectController.ajaxAddSolutionComment')
+    Route.post('/problem/:problemID/comment','ProjectController.ajaxAddProblemComment')
+    Route.post('/votes','PublicController.ajaxGetVotes')
+    Route.get('/show/:projectID/vote/:commentID','ProjectController.ajaxVoteProjectComment')
+    Route.get('/show/:projectID/:problemID/vote/:commentID','ProjectController.ajaxVoteProblemComment')
+    Route.get('/show/:projectID/:problemID/vote/solution/:solutionID','ProjectController.ajaxVoteSolution')
+    Route.get('/show/:projectID/:problemID/:solutionID/vote/:commentID','ProjectController.ajaxVoteSolutionComment')
+    Route.get('/show/:projectID/vote/problem/:problemID','ProjectController.ajaxVoteProblem')
 }).prefix('/ajax')

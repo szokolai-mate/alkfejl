@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<link rel="stylesheet" type="text/css" href="../stylesheet-normal.css">
+<link rel="stylesheet" type="text/css" href="/stylesheet-normal.css">
 
  <!-- calculate accordion heights and put em here -->
 <style>
@@ -15,6 +15,20 @@
 }
 
 </style>
+
+<div id="modal" class="modal fade confirm-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+        <div class="modal-body">
+            Deactivate project?
+        </div>
+        <div class="modal-footer">
+            <button id="deactivateConfirm" type="button" class="btn btn-success modal-ok" data-dismiss="modal">OK</button>
+            <button type="button" class="btn btn-danger modal-cancel" data-dismiss="modal">Cancel</button>
+        </div>
+        </div>
+    </div>
+</div>
 
 <div class="to-right trusted-users">
 {% if trustedusers!="" %}
@@ -77,8 +91,8 @@
     <br>
     {% if project.active==true %}
     <br>
-    <div class="button logout">
-    <a href="/show/{{project.id}}/deactivate">Deactivate Project</a>
+    <div id="deactivateButton" class="button logout">
+    <a id="deactivate" href="/show/{{project.id}}/deactivate">Deactivate Project</a>
     </div>
     {% else %}
     <br>
@@ -118,7 +132,7 @@
     <article class="submenu widthOf">
     <div class="container comment-list">
         {% if projectcomments!="" %}
-        <ul class="list">
+        <ul id="commentlist" class="list">
         {% for comment in projectcomments %}
             <li class="list-item">
             <div {% if currentUser.id==comment.ownerID %} class="own-item" {% endif %}>
@@ -134,12 +148,12 @@
             </div>
             {% if currentUser %}
             <div class="voter">
-                <form action="/show/{{ project.id }}/vote/{{ comment.id }}" method="post">
+                <form id="negative-vote-form" action="/show/{{ project.id }}/vote/{{ comment.id }}" method="post">
                       {{ csrfField }}
                     <input type="checkbox" style="display:none;" name="positive">
                 <button class="negative-vote {% if comment.voted==-1 %}voted{% endif %}"></button>
                 </form>
-                <form action="/show/{{ project.id }}/vote/{{ comment.id }}" method="post">
+                <form id="positive-vote-form" action="/show/{{ project.id }}/vote/{{ comment.id }}" method="post">
                       {{ csrfField }}
                     <input type="checkbox" checked style="display:none;" name="positive">
                 <button class="positive-vote {% if comment.voted==1 %}voted{% endif %}"></button>
@@ -165,7 +179,7 @@
             <label for="content">Your Comment</label>
             <textarea name="content" placeholder="Your comment" form="newcomment-form" rows="5" required>{{ old('content') }}</textarea>
             <br>
-            <input type="submit" value="Comment">
+            <input id="projectcommentbutton" type="submit" value="Comment">
         </form>
     </div>
     {% endif %}
@@ -242,6 +256,10 @@
 </div>
 
 </div>
+
+<script src="/scripts/refreshproject.js"></script>
+<script src="/scripts/accordion.js"></script>
+<script src="/scripts/confirm.js"></script>
 
 
 {% endblock %}

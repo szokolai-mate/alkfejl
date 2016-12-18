@@ -241,7 +241,7 @@ class PublicController {
                 if (!votes.isEmpty()) {
                     var cv = votes.size()
                     for (var j = 0; j < cv; j += 1) {
-                        sum += (votes.value())[i].attributes.value;
+                        sum += (votes.value())[j].attributes.value;
                     }
                 }
                 (problems.value())[i].attributes.score = sum;
@@ -275,7 +275,7 @@ class PublicController {
                 if (!votes.isEmpty()) {
                     var cv = votes.size()
                     for (var j = 0; j < cv; j += 1) {
-                        sum += (votes.value())[i].attributes.value;
+                        sum += (votes.value())[j].attributes.value;
                     }
                 }
                 (solutions.value())[i].attributes.score = sum;
@@ -507,9 +507,11 @@ class PublicController {
                 if (owner) {
                     (filtered.value())[i].attributes.owner = owner
                 }
+                if(request.currentUser){
                 if(request.currentUser.id == (filtered.value())[i].attributes.ownerID)
                 {
                     (filtered.value())[i].attributes.ownitem=1;
+                }
                 }
             }
         }
@@ -520,6 +522,333 @@ class PublicController {
         }
         )
     }
+
+    *ajaxProjectComments(request,response){
+        const projectID=request.param("projectID")
+
+        if(!projectID){
+            response.ok({
+                success :false
+            })
+        }
+
+        const comments = yield Projectcomment.query().where('projectID', projectID).fetch()
+
+        if (!comments) {
+            comments = []
+        }
+        if (!comments.isEmpty()) {
+            var c = comments.size()
+            for (var i = 0; i < c; i += 1) {
+                (comments.value())[i].attributes.content = ((comments.value())[i].attributes.content.split("\n"))
+                const owner = yield User.find((comments.value())[i].attributes.ownerID)
+                if (owner) {
+                    (comments.value())[i].attributes.owner = owner
+                }
+                if(request.currentUser){
+                    if(request.currentUser.id==owner.id){
+                         (comments.value())[i].attributes.ownitem=1;
+                    }
+                }
+
+
+                const votes = yield Projectcommentvote.query().where('commentID', (comments.value())[i].attributes.id).fetch()
+                if (!votes) {
+                    votes = []
+                }
+                var sum = 0;
+                if (!votes.isEmpty()) {
+                    var vc = votes.size()
+                    for (var j = 0; j < vc; j += 1) {
+                        sum += (votes.value())[j].attributes.value;
+                        if (request.currentUser) {
+                            if (request.currentUser.id == (votes.value())[j].attributes.ownerID) {
+                                (comments.value())[i].attributes.voted = (votes.value())[j].attributes.value;
+                            }
+                        }
+                    }
+                }
+                (comments.value())[i].attributes.score = sum;
+
+            }
+        }
+
+        var loggedin = 0
+        if(request.currentUser){
+            loggedin = 1;
+        }
+
+        response.ok({
+            success : true,
+            loggedin: loggedin,
+            projectcomments : comments.toJSON()
+        })
+
+    }
+
+    * ajaxGetVotes(request,response){
+
+        const requestdata=request.post()
+        const id = requestdata.id
+
+        if(!id || !requestdata || ! requestdata.type){
+            response.ok({success:false})
+            return;
+        }
+
+        var sum = 0
+        var comment = 0
+        var votes = 0
+        switch(requestdata.type){
+            case "project" : 
+                comment = yield Projectcomment.find(id);
+                if(!comment){
+                     response.ok({success:false})
+                 return;
+                }
+                votes = yield Projectcommentvote.query().where('commentID', id).fetch()
+
+                if(!votes){votes=[]}
+                if (!votes.isEmpty()) {
+                    let vc = votes.size()
+                    for (let j = 0; j < vc; j += 1) {
+                        sum += (votes.value())[j].attributes.value;
+                        
+                    }
+                }
+                response.ok({
+                    success:true,
+                    score:sum
+                })
+                return
+                 //case: "project"
+            case "problemComment" :
+                comment = yield Problemcomment.find(id);
+                if(!comment){
+                     response.ok({success:false})
+                 return;
+                }
+                votes = yield Problemcommentvote.query().where('commentID', id).fetch()
+
+                if(!votes){votes=[]}
+                if (!votes.isEmpty()) {
+                    var vc = votes.size()
+                    for (var j = 0; j < vc; j += 1) {
+                        sum += (votes.value())[j].attributes.value;
+                        
+                    }
+                }
+                 response.ok({
+                    success:true,
+                    score:sum
+                })
+                return
+                 //case: "problemComment"
+            case "solution" :
+                const solution = yield Solution.find(id)
+                if(!solution){
+                     response.ok({success:false})
+                 return;
+                }
+
+                votes = yield Solutionvote.query().where('solutionID', id).fetch()
+                if (!votes) {
+                    votes = []
+                }
+                if (!votes.isEmpty()) {
+                    var vc = votes.size()
+                    for (var j = 0; j < vc; j += 1) {
+                        sum += (votes.value())[j].attributes.value;
+                    }
+                }
+                 response.ok({
+                    success:true,
+                    score:sum
+                })
+                return
+            //case :solution
+            case "solutioncommentvote" :
+                    const solutioncomment = yield Solutioncomment.find(id)
+                    if(!solutioncomment){
+                         response.ok({success:false})
+                         return;
+                     }
+                    votes = yield Solutioncommentvote.query().where('commentID', id).fetch()
+                    if (!votes) {
+                        votes = []
+                    }
+                    if (!votes.isEmpty()) {
+                        var vc = votes.size()
+                        for (var j = 0; j < vc; j += 1) {
+                            sum += (votes.value())[j].attributes.value;
+                        }
+                    }
+                     response.ok({
+                    success:true,
+                    score:sum
+                })
+                return
+
+            //case : solutioncommentvote
+            case  "problem" :
+                const problem = yield Problem.find(id)
+                if(!problem){
+                         response.ok({success:false})
+                         return;
+                }
+                votes = yield Problemvote.query().where('problemID', id).fetch()
+                if (!votes) {
+                    votes = []
+                }
+                if (!votes.isEmpty()) {
+                    var cv = votes.size()
+                    for (var j = 0; j < cv; j += 1) {
+                        sum += (votes.value())[j].attributes.value;
+                    }
+                }
+                 response.ok({
+                    success:true,
+                    score:sum
+                })
+                return
+
+            //case : problem
+
+        }
+        response.ok({
+            success:false
+        })
+    }
+
+    * ajaxProblemComments(request,response){
+        const problemID=request.param("problemID")
+
+        if(!problemID){
+            response.ok({
+                success :false
+            })
+            return
+        }
+
+        const comments = yield Problemcomment.query().where('problemID', problemID).fetch()
+
+        if (!comments) {
+            comments = []
+        }
+        if (!comments.isEmpty()) {
+            var c = comments.size()
+            for (var i = 0; i < c; i += 1) {
+                (comments.value())[i].attributes.content = ((comments.value())[i].attributes.content.split("\n"))
+                const owner = yield User.find((comments.value())[i].attributes.ownerID)
+                if (owner) {
+                    (comments.value())[i].attributes.owner = owner
+                }
+                if(request.currentUser){
+                    if(request.currentUser.id==owner.id){
+                         (comments.value())[i].attributes.ownitem=1;
+                    }
+                }
+
+
+                const votes = yield Problemcommentvote.query().where('commentID', (comments.value())[i].attributes.id).fetch()
+                if (!votes) {
+                    votes = []
+                }
+                var sum = 0;
+                if (!votes.isEmpty()) {
+                    var vc = votes.size()
+                    for (var j = 0; j < vc; j += 1) {
+                        sum += (votes.value())[j].attributes.value;
+                        if (request.currentUser) {
+                            if (request.currentUser.id == (votes.value())[j].attributes.ownerID) {
+                                (comments.value())[i].attributes.voted = (votes.value())[j].attributes.value;
+                            }
+                        }
+                    }
+                }
+                (comments.value())[i].attributes.score = sum;
+
+            }
+        }
+
+        var loggedin = 0
+        if(request.currentUser){
+            loggedin = 1;
+        }
+
+        response.ok({
+            success : true,
+            loggedin: loggedin,
+            problemcomments : comments.toJSON()
+        })
+
+    }
+
+
+    * ajaxSolutionComments(request,response){
+        const solutionID=request.param("solutionID")
+
+        if(!solutionID){
+            response.ok({
+                success :false
+            })
+            return
+        }
+
+        const comments = yield Solutioncomment.query().where('solutionID', solutionID).fetch()
+
+        if (!comments) {
+            comments = []
+        }
+        if (!comments.isEmpty()) {
+            var c = comments.size()
+            for (var i = 0; i < c; i += 1) {
+                (comments.value())[i].attributes.content = ((comments.value())[i].attributes.content.split("\n"))
+                const owner = yield User.find((comments.value())[i].attributes.ownerID)
+                if (owner) {
+                    (comments.value())[i].attributes.owner = owner
+                }
+                if(request.currentUser){
+                    if(request.currentUser.id==owner.id){
+                         (comments.value())[i].attributes.ownitem=1;
+                    }
+                }
+
+
+                const votes = yield Solutioncommentvote.query().where('commentID', (comments.value())[i].attributes.id).fetch()
+                if (!votes) {
+                    votes = []
+                }
+                var sum = 0;
+                if (!votes.isEmpty()) {
+                    var vc = votes.size()
+                    for (var j = 0; j < vc; j += 1) {
+                        sum += (votes.value())[j].attributes.value;
+                        if (request.currentUser) {
+                            if (request.currentUser.id == (votes.value())[j].attributes.ownerID) {
+                                (comments.value())[i].attributes.voted = (votes.value())[j].attributes.value;
+                            }
+                        }
+                    }
+                }
+                (comments.value())[i].attributes.score = sum;
+
+            }
+        }
+
+        var loggedin = 0
+        if(request.currentUser){
+            loggedin = 1;
+        }
+
+        response.ok({
+            success : true,
+            loggedin: loggedin,
+            solutioncomments : comments.toJSON()
+        })
+
+    }
+
 
 }
 

@@ -1,10 +1,8 @@
 <header>
 
 <div class="to-left">
-<image>
-<div class="item">
-<a href="/">Lapcím</a>
-</div>
+<a href="/"><div class="item logo"></div>
+</a>
 </div>
 
 {% if currentUser %}
@@ -15,17 +13,15 @@
 </div>
 </div>
 
-<div class="to-right">
+<div class="to-right headertest">
 <div class="item welcome">
 Welcome, {{ currentUser.displayName }}!
 </div>
 <div class="item button login">
     <a href="/profile/{{ currentUser.id  }}">Profile</a>
 </div>
-<div class="item">
-<div id="logout" class="button logout">
+<div id="logout" class="item button logout">
     <a href="/logout">Log Out</a>
-</div>
 </div>
 </div>
 

@@ -1,6 +1,6 @@
 {% extends "layout" %} {% block content %}
 
-<link rel="stylesheet" type="text/css" href="../stylesheet-normal.css">
+<link rel="stylesheet" type="text/css" href="/stylesheet-normal.css">
 
 <style>
     .accordion article {
@@ -17,12 +17,12 @@
                                         </div>
                                         {% if currentUser %}
                                         <div class="voter">
-                                              <form action="/{{ project.id }}/show/{{ problem.id }}/vote" method="post">
+                                              <form id="positive-vote-form" action="/{{ project.id }}/show/{{ problem.id }}/vote" method="post">
                                                 {{ csrfField }}
                                                 <input type="checkbox" checked style="display:none;" name="positive">
                                                 <button class="positive-vote {% if problem.voted==1 %}voted{% endif %}"></button>
                                             </form>
-                                            <form action="/{{ project.id }}/show/{{ problem.id }}/vote" method="post">
+                                            <form id="negative-vote-form" action="/{{ project.id }}/show/{{ problem.id }}/vote" method="post">
                                                 {{ csrfField }}
                                                 <input type="checkbox" style="display:none;" name="positive">
                                                 <button class="negative-vote {% if problem.voted==-1 %}voted{% endif %}"></button>
@@ -108,7 +108,7 @@
                 <article class="submenu widthOf" >
                     <div class="container comment-list">
                         {% if comments!="" %}
-                        <ul class="list">
+                        <ul id="problemcommentlist" class="list">
                             {% for comment in comments %}
                             <li class="list-item">
                                 <div {% if currentUser.id==comment.ownerID %} class="own-item" {% endif %}>
@@ -122,12 +122,12 @@
                                         </div>
                                         {% if currentUser %}
                                         <div class="voter">
-                                            <form action="/{{ project.id }}/show/{{ problem.id }}/vote/{{ comment.id }}" method="post">
+                                            <form id="negative-vote-form" action="/{{ project.id }}/show/{{ problem.id }}/vote/{{ comment.id }}" method="post">
                                                 {{ csrfField }}
                                                 <input type="checkbox" style="display:none;" name="positive">
                                                 <button class="negative-vote {% if comment.voted==-1 %}voted{% endif %}"></button>
                                             </form>
-                                            <form action="/{{ project.id }}/show/{{ problem.id }}/vote/{{ comment.id }}" method="post">
+                                            <form id="positive-vote-form" action="/{{ project.id }}/show/{{ problem.id }}/vote/{{ comment.id }}" method="post">
                                                 {{ csrfField }}
                                                 <input type="checkbox" checked style="display:none;" name="positive">
                                                 <button class="positive-vote {% if comment.voted==1 %}voted{% endif %}"></button>
@@ -147,12 +147,12 @@
                     </div>
                     {% if currentUser %}
                     <div class="container">
-                        <form id="newcomment-form" method="post" action="/{{ project.id }}/show/{{ problem.id }}/comment">
+                        <form id="newproblemcomment-form" method="post" action="/{{ project.id }}/show/{{ problem.id }}/comment">
                             {{ csrfField }}
                             <label for="content">Your Comment</label>
-                            <textarea name="content" placeholder="Your comment" form="newcomment-form" rows="5" required>{{ old('content') }}</textarea>
+                            <textarea id="problemcommentcontent" name="content" placeholder="Your comment" form="newcomment-form" rows="5" required>{{ old('content') }}</textarea>
                             <br>
-                            <input type="submit" value="Comment">
+                            <input id="newproblemcommentbutton" type="submit" value="Comment">
                         </form>
                     </div>
                     {% endif %}
@@ -179,7 +179,7 @@
 
                         <ul class="list">
                             {% for solution in solutions %}
-                            <li class="list-item {% if solution.active==0 %}deactivated{% endif %}{% if solution.accepted==1 %} accepted{% endif %}">
+                            <li class=" solution list-item {% if solution.active==0 %}deactivated{% endif %}{% if solution.accepted==1 %} accepted{% endif %}">
                                 <div class="">
                                     <div class="description ">
                                         {% for line in solution.description %}
@@ -194,12 +194,12 @@
                                                                 </div>
                                                                 {% if currentUser %}
                                                                 <div class="voter">
-                                                                    <form action="/{{ project.id }}/{{ problem.id }}/show/{{ solution.id }}/vote" method="post">
+                                                                    <form id="negative-vote-form" action="/{{ project.id }}/{{ problem.id }}/show/{{ solution.id }}/vote" method="post">
                                                                         {{ csrfField }}
                                                                         <input type="checkbox" style="display:none;" name="positive">
                                                                         <button class="negative-vote {% if solution.voted==-1 %}voted{% endif %}"></button>
                                                                     </form>
-                                                                    <form action="/{{ project.id }}/{{ problem.id }}/show/{{ solution.id }}/vote" method="post">
+                                                                    <form id="positive-vote-form" action="/{{ project.id }}/{{ problem.id }}/show/{{ solution.id }}/vote" method="post">
                                                                         {{ csrfField }}
                                                                         <input type="checkbox" checked style="display:none;" name="positive">
                                                                         <button class="positive-vote {% if solution.voted==1 %}voted{% endif %}"></button>
@@ -225,7 +225,7 @@
                                         {% endif %}
                                         {% endfor %}
                                         <div class="owner">
-                                            <a href="/profile/{{ comment.ownerID }}">
+                                            <a href="/profile/{{ solution.ownerID }}">
                                             {{ solution.owner.displayName }}
                                             </a>
                                         </div>
@@ -289,12 +289,12 @@
                                                                 </div>
                                                                 {% if currentUser %}
                                                                 <div class="voter">
-                                                                    <form action="/{{ project.id }}/{{ problem.id }}/show/{{ solution.id }}/vote/{{ comment.id }}" method="post">
+                                                                    <form id="negative-vote-form" action="/{{ project.id }}/{{ problem.id }}/show/{{ solution.id }}/vote/{{ comment.id }}" method="post">
                                                                         {{ csrfField }}
                                                                         <input type="checkbox" style="display:none;" name="positive">
                                                                         <button class="negative-vote {% if comment.voted==-1 %}voted{% endif %}"></button>
                                                                     </form>
-                                                                    <form action="/{{ project.id }}/{{ problem.id }}/show/{{ solution.id }}/vote/{{ comment.id }}" method="post">
+                                                                    <form id="positive-vote-form" action="/{{ project.id }}/{{ problem.id }}/show/{{ solution.id }}/vote/{{ comment.id }}" method="post">
                                                                         {{ csrfField }}
                                                                         <input type="checkbox" checked style="display:none;" name="positive">
                                                                         <button class="positive-vote {% if comment.voted==1 %}voted{% endif %}"></button>
@@ -320,7 +320,7 @@
                                                   <label for="solutioncommentcontent">Your Comment</label>
                                                   <textarea name="solutioncommentcontent" placeholder="Your comment" form="newsolutioncomment-form-{{ solution.id }}" rows="5" required>{{ old('solutioncommentcontent') }}</textarea>
                                                   <br>
-                                                  <input type="submit" value="Comment">
+                                                  <input class="newsolutioncommentbutton" type="submit" value="Comment">
                                                  </form>
                                             </div>
                                         {% endif %}
@@ -348,5 +348,7 @@
             <br> {% endif %}
         </div>
 
+        <script src="/scripts/refreshproblem.js"></script>
+        <script src="/scripts/accordion.js"></script>
 
         {% endblock %}

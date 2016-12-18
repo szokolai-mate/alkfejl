@@ -259,10 +259,18 @@ header .to-left{
     height:30px;
     width:30px;
     top: 10px;
-    background: red;
+    background-image: url("/img/next.png");
+    background-repeat: no-repeat;
+    background-color: inherit;
     margin-top:6px;
 }
 
+.logo{
+    background-image: url("/img/logo_smol.png");
+    background-repeat: no-repeat;
+    width:50px;
+    height:50px;
+}
 
 .welcome {
     font-weight: bold;
@@ -388,7 +396,9 @@ header .to-left{
     text-align: center;
 }
 .delete-icon{
-    background: red;
+    background-color: inherit;
+    background-image: url("/img/delete.png");
+    background-repeat: no-repeat;
     height: 25px;
     width: 25px;
     float: right;
@@ -404,7 +414,9 @@ header .to-left{
 .positive-vote{
     width: 20px;
     height: 20px;
-    background: green;
+    background-image: url("/img/upvote.png");
+    background-repeat: no-repeat;
+    background-color: inherit;
     float: left;
     border: none;
 }
@@ -412,13 +424,15 @@ header .to-left{
 .negative-vote{
     width: 20px;
     height: 20px;
-    background: red;
+    background-image: url("/img/downvote.png");
+    background-repeat: no-repeat;
+    background-color: inherit;
     float: right;
     border: none;
 }
 
 .voted{
-    background: #aaaacc;
+    background-color: #aaaacc;
     border-radius: 5px;
 }
 
@@ -542,4 +556,8 @@ label{
 
 .accordion input:not(:checked) ~ article.submenu{
     height:0px;
+}
+
+.headertest{
+    width:50%;
 }

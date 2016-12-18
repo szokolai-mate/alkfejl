@@ -577,7 +577,6 @@ class ProjectController {
         }
 
         yield vote.save()
-
         response.redirect('back')
     }
 
@@ -1559,6 +1558,559 @@ class ProjectController {
 
         response.redirect('back')
     }
+
+
+       * ajaxAddProjectComment(request,response){
+        const isLoggedIn = yield request.auth.check()
+        if(!isLoggedIn){
+            yield request
+            .withAll()
+            .andWith({headererrors: [{message: 'Not logged in!'}]})
+            .flash()
+            return
+        }
+
+        const commentdata = request.except('_csrf');
+
+        const rules = {
+        content: 'required|max:500',
+        };
+
+        const validation = yield Validator.validateAll(commentdata, rules)
+
+
+        if (validation.fails()) {
+        yield request
+        .withAll()
+        .andWith({errors: validation.messages()})
+        .flash()
+        return
+        }
+
+        const project = yield Project.find(request.param('projectID'))
+
+        if(!project){
+        yield request
+        .withAll()
+        .andWith({headererrors: [{message: 'Project not found!'}]})
+        .flash()
+        return
+        }
+
+        const owner = yield User.find(request.currentUser.id)
+         if(!owner){
+        yield request
+        .withAll()
+        .andWith({headererrors: [{message: 'User not found!'}]})
+        .flash()
+        return
+        }
+
+        const comment = new Projectcomment()
+
+        comment.content = commentdata.content;
+        comment.ownerID = request.currentUser.id;
+        comment.projectID = request.param('projectID')
+        yield comment.save()
+        
+        response.ok({
+            success:true
+        }
+        )
+    }
+
+
+    * ajaxVoteProjectComment(request,response){
+        const isLoggedIn = yield request.auth.check()
+        if(!isLoggedIn){
+            yield request
+            .withAll()
+            .andWith({headererrors: [{message: 'Not logged in!'}]})
+            .flash()
+            response.redirect('back')
+            return
+        }
+
+         const id = request.param('projectID')
+         if(!id){
+            response.redirect('/')
+            return
+        }
+
+        const project = yield Project.find(id)
+
+        if(!project || !id){
+            yield request
+            .withAll()
+            .andWith({headererrors: [{message: 'Project not found!'}]})
+            .flash()
+            response.redirect('back')
+            return
+        }
+
+        const commentID = request.param('commentID')
+
+        const comment = yield Projectcomment.find(commentID)
+
+        if(!comment || !commentID){
+            yield request
+            .withAll()
+            .andWith({headererrors: [{message: 'Comment not found!'}]})
+            .flash()
+            response.redirect('back')
+            return
+        }
+
+        const positive = request.input('positive')
+
+        var vote = yield Projectcommentvote.query().where('commentID',commentID).where('ownerID',request.currentUser.id).first()
+
+        if(vote){
+            if(positive){
+                vote.value=1
+            }
+            else{vote.value=-1}
+        }
+        else{
+            vote = new Projectcommentvote()
+            vote.ownerID=request.currentUser.id
+            vote.commentID=commentID
+            if(positive){
+                vote.value=1
+            }
+            else{vote.value=-1}
+        }
+
+        yield vote.save()
+        response.ok({
+            success:true
+        })
+    }
+
+
+    * ajaxAddProblemComment(request,response){
+        const isLoggedIn = yield request.auth.check()
+        if(!isLoggedIn){
+            yield request
+            .withAll()
+            .andWith({headererrors: [{message: 'Not logged in!'}]})
+            .flash()
+            return
+        }
+
+        const commentdata = request.except('_csrf');
+
+        const rules = {
+        content: 'required|max:500',
+        };
+
+        const validation = yield Validator.validateAll(commentdata, rules)
+
+        if (validation.fails()) {
+        yield request
+        .withAll()
+        .andWith({errors: validation.messages()})
+        .flash()
+        return
+        }
+
+        const problem = yield Problem.find(request.param('problemID'))
+
+        if(!problem){
+        yield request
+        .withAll()
+        .andWith({headererrors: [{message: 'Problem not found!'}]})
+        .flash()
+        return
+        }
+
+        const owner = yield User.find(request.currentUser.id)
+         if(!owner){
+        yield request
+        .withAll()
+        .andWith({headererrors: [{message: 'User not found!'}]})
+        .flash()
+        return
+        }
+
+        const comment = new Problemcomment()
+
+        comment.content = commentdata.content;
+        comment.ownerID = request.currentUser.id;
+        comment.problemID = request.param('problemID')
+        yield comment.save()
+        
+        response.ok({
+            success:true
+        }
+        )
+    }
+
+* ajaxAddSolutionComment(request,response){
+        const isLoggedIn = yield request.auth.check()
+        if(!isLoggedIn){
+            yield request
+            .withAll()
+            .andWith({headererrors: [{message: 'Not logged in!'}]})
+            .flash()
+            return
+        }
+
+        const commentdata = request.except('_csrf');
+
+        const rules = {
+        content: 'required|max:500',
+        };
+
+        const validation = yield Validator.validateAll(commentdata, rules)
+
+        if (validation.fails()) {
+        yield request
+        .withAll()
+        .andWith({errors: validation.messages()})
+        .flash()
+        return
+        }
+
+        const solution = yield Solution.find(request.param('solutionID'))
+
+        if(!solution){
+        yield request
+        .withAll()
+        .andWith({headererrors: [{message: 'Solution not found!'}]})
+        .flash()
+        return
+        }
+
+        const owner = yield User.find(request.currentUser.id)
+         if(!owner){
+        yield request
+        .withAll()
+        .andWith({headererrors: [{message: 'User not found!'}]})
+        .flash()
+        return
+        }
+
+        const comment = new Solutioncomment()
+
+        comment.content = commentdata.content;
+        comment.ownerID = request.currentUser.id;
+        comment.solutionID = request.param('solutionID')
+        yield comment.save()
+        
+        response.ok({
+            success:true
+        }
+        )
+    }
+
+
+     * ajaxVoteProblemComment(request,response){
+        const isLoggedIn = yield request.auth.check()
+        if(!isLoggedIn){
+            yield request
+            .withAll()
+            .andWith({headererrors: [{message: 'Not logged in!'}]})
+            .flash()
+            response.redirect('back')
+            return
+        }
+
+         const id = request.param('projectID')
+         if(!id){
+            response.redirect('/')
+            return
+        }
+
+        const project = yield Project.find(id)
+
+        if(!project || !id){
+            yield request
+            .withAll()
+            .andWith({headererrors: [{message: 'Project not found!'}]})
+            .flash()
+            response.redirect('back')
+            return
+        }
+
+        const problemID = request.param('problemID')
+         if(!problemID){
+            response.redirect('/')
+            return
+        }
+
+        const problem = yield Problem.find(id)
+
+        if(!problem || !problemID){
+            yield request
+            .withAll()
+            .andWith({headererrors: [{message: 'Problem not found!'}]})
+            .flash()
+            response.redirect('back')
+            return
+        }
+
+        const commentID = request.param('commentID')
+
+        const comment = yield Problemcomment.find(commentID)
+
+        if(!comment || !commentID){
+            yield request
+            .withAll()
+            .andWith({headererrors: [{message: 'Comment not found!'}]})
+            .flash()
+            response.redirect('back')
+            return
+        }
+
+        const positive = request.input('positive')
+
+        var vote = yield Problemcommentvote.query().where('commentID',commentID).where('ownerID',request.currentUser.id).first()
+
+        if(vote){
+            if(positive){
+                vote.value=1
+            }
+            else{vote.value=-1}
+        }
+        else{
+            vote = new Problemcommentvote()
+            vote.ownerID=request.currentUser.id
+            vote.commentID=commentID
+            if(positive){
+                vote.value=1
+            }
+            else{vote.value=-1}
+        }
+        yield vote.save()
+        response.ok({
+            success:true
+        })
+    }
+
+    * ajaxVoteSolution(request,response){
+         const isLoggedIn = yield request.auth.check()
+        if(!isLoggedIn){
+            yield request
+            .withAll()
+            .andWith({headererrors: [{message: 'Not logged in!'}]})
+            .flash()
+            response.redirect('back')
+            return
+        }
+
+         const id = request.param('projectID')
+         if(!id){
+            response.redirect('/')
+            return
+        }
+
+        const project = yield Project.find(id)
+
+        if(!project || !id){
+            yield request
+            .withAll()
+            .andWith({headererrors: [{message: 'Project not found!'}]})
+            .flash()
+            response.redirect('back')
+            return
+        }
+
+        const solutionID = request.param('solutionID')
+
+        const solution = yield Solution.find(solutionID)
+
+        if(!solution || !solutionID){
+            yield request
+            .withAll()
+            .andWith({headererrors: [{message: 'Solution not found!'}]})
+            .flash()
+            response.redirect('back')
+            return
+        }
+
+        const problemID = request.param('problemID')
+
+        const problem = yield Problem.find(problemID)
+
+        if(!problem || !problemID){
+            yield request
+            .withAll()
+            .andWith({headererrors: [{message: 'Problem not found!'}]})
+            .flash()
+            response.redirect('back')
+            return
+        }
+
+        const positive = request.input('positive')
+
+        var vote = yield Solutionvote.query().where('solutionID',solutionID).where('ownerID',request.currentUser.id).first()
+
+        if(vote){
+            if(positive){
+                vote.value=1
+            }
+            else{vote.value=-1}
+        }
+        else{
+            vote = new Solutionvote()
+            vote.ownerID=request.currentUser.id
+            vote.solutionID=solutionID
+            if(positive){
+                vote.value=1
+            }
+            else{vote.value=-1}
+        }
+
+        yield vote.save()
+
+        response.ok({
+            success:true
+        })
+    }
+
+    * ajaxVoteSolutionComment(request,response){
+        const isLoggedIn = yield request.auth.check()
+        if(!isLoggedIn){
+            yield request
+            .withAll()
+            .andWith({headererrors: [{message: 'Not logged in!'}]})
+            .flash()
+            response.redirect('back')
+            return
+        }
+
+         const id = request.param('projectID')
+         const solutionID = request.param('solutionID')
+         const problemID = request.param('problemID')
+         if(!id || !problemID || !solutionID){
+            response.redirect('/')
+            return
+        }
+
+        const project = yield Project.find(id)
+        const solution = yield Solution.find(solutionID)
+        const problem = yield Problem.find(problemID)
+
+        if(!project || !id || !solution || !problem){
+            yield request
+            .withAll()
+            .andWith({headererrors: [{message: 'Project not found!'}]})
+            .flash()
+            response.redirect('back')
+            return
+        }
+
+        const commentID = request.param('commentID')
+
+        const comment = yield Solutioncomment.find(commentID)
+
+        if(!comment || !commentID){
+            yield request
+            .withAll()
+            .andWith({headererrors: [{message: 'Comment not found!'}]})
+            .flash()
+            response.redirect('back')
+            return
+        }
+
+        const positive = request.input('positive')
+
+        var vote = yield Solutioncommentvote.query().where('commentID',commentID).where('ownerID',request.currentUser.id).first()
+
+        if(vote){
+            if(positive){
+                vote.value=1
+            }
+            else{vote.value=-1}
+        }
+        else{
+            vote = new Solutioncommentvote()
+            vote.ownerID=request.currentUser.id
+            vote.commentID=commentID
+            if(positive){
+                vote.value=1
+            }
+            else{vote.value=-1}
+        }
+
+        yield vote.save()
+        response.ok({
+            success:true
+        })
+    }
+
+
+    * ajaxVoteProblem(request,response){
+        
+        const isLoggedIn = yield request.auth.check()
+        if(!isLoggedIn){
+            yield request
+            .withAll()
+            .andWith({headererrors: [{message: 'Not logged in!'}]})
+            .flash()
+            response.redirect('back')
+            return
+        }
+
+         const id = request.param('projectID')
+         if(!id){
+            response.redirect('/')
+            return
+        }
+
+        const project = yield Project.find(id)
+
+        if(!project || !id){
+            yield request
+            .withAll()
+            .andWith({headererrors: [{message: 'Project not found!'}]})
+            .flash()
+            response.redirect('back')
+            return
+        }
+
+        const problemID = request.param('problemID')
+
+        const problem = yield Problem.find(problemID)
+
+        if(!problem || !problemID){
+            yield request
+            .withAll()
+            .andWith({headererrors: [{message: 'Problem not found!'}]})
+            .flash()
+            response.redirect('back')
+            return
+        }
+
+        const positive = request.input('positive')
+
+        var vote = yield Problemvote.query().where('problemID',problemID).where('ownerID',request.currentUser.id).first()
+
+        if(vote){
+            if(positive){
+                vote.value=1
+            }
+            else{vote.value=-1}
+        }
+        else{
+            vote = new Problemvote()
+            vote.ownerID=request.currentUser.id
+            vote.problemID=problemID
+            if(positive){
+                vote.value=1
+            }
+            else{vote.value=-1}
+        }
+
+        yield vote.save()
+
+        response.ok({
+            success:true
+        })
+    }
+
+
 }
 
 module.exports = ProjectController

@@ -310,15 +310,19 @@ Felhasználóként: Kommentelés egy megoldásra.
 
 ##Hogy telepitsd a Seleniumot
 
+A Selenium IDE egy Firefox bővítmény. Telepítése után a Firefox-ból kell elindítani.
+
 
 ##Hogy futtasd a teszteket Seleniumban
 
+  A teszt fileok a `/test` könyvtárban találhatóak. A Selenium bővítmény megnyitása után a 'File->Open' menüpontokkal lehet a fileokat kiválasztani, majd  a 'Play entire test suite' gombbal az összes tesztet le lehet futtatni.
 
-  - Belépés
+
+**Tesztesetek:**
+
+  - Belépés : `loginTest.html`
   
-  - Project deaktiválása
+  - Project deaktiválása és aktiválása : `projectActivateAndDeactivateTest.html` 
   
-  - Project aktiválása
-  
-  - Szavazás
+  - Szavazás : `voteTest.html`
   
